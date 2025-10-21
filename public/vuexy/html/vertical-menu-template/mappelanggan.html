@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+
+<html
+  lang="en"
+  class="light-style layout-navbar-fixed layout-menu-fixed layout-compact"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../../assets/"
+  data-template="vertical-menu-template">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Peta Pelanggan | ISP Management Dashboard</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&ampdisplay=swap"
+      rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/tabler-icons.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/libs/node-waves/node-waves.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Page CSS -->
+    <style>
+      #map {
+        height: 600px;
+        width: 100%;
+        border-radius: 8px;
+      }
+      .leaflet-popup-content-wrapper {
+        border-radius: 8px;
+      }
+      .leaflet-popup-content {
+        margin: 13px 19px;
+        line-height: 1.4;
+      }
+    </style>
+
+    <!-- Helpers -->
+    <script src="../../assets/vendor/js/helpers.js"></script>
+    <script src="../../assets/vendor/js/template-customizer.js"></script>
+    <script src="../../assets/js/config.js"></script>
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+        <!-- Sidebar Menu Navigation -->
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="index.html" class="app-brand-link">
+              <span class="app-brand-logo demo">
+                <!-- Your Logo SVG Here -->
+              </span>
+              <span class="app-brand-text demo menu-text fw-bold">YourApp</span>
+            </a>
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+              <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
+              <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
+            </a>
+          </div>
+
+          <div class="menu-inner-shadow"></div>
+
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Main Navigation</span>
+            </li>
+            
+            <li class="menu-item">
+              <a href="dashboard.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <div data-i18n="Dashboard">Dashboard</div>
+              </a>
+            </li>
+
+            <!-- Session User -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-users"></i>
+                <div data-i18n="Session User">Session User</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="session-hotspot.html" class="menu-link">
+                    <div data-i18n="Hotspot">Hotspot</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="session-ppp.html" class="menu-link">
+                    <div data-i18n="PPP">PPP</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Settings -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-settings"></i>
+                <div data-i18n="Settings">Pengaturan</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="settings-general.html" class="menu-link">
+                    <div data-i18n="General">Pengaturan Umum</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="settings-users.html" class="menu-link">
+                    <div data-i18n="Users">Manajemen User</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="settings-whatsapp.html" class="menu-link">
+                    <div data-i18n="WhatsApp">WhatsApp API</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="settings-email.html" class="menu-link">
+                    <div data-i18n="Email">Setting Email</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="settings-payment.html" class="menu-link">
+                    <div data-i18n="Payment">Payment Gateway</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Router/NAS -->
+            <li class="menu-item">
+              <a href="routers.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-server"></i>
+                <div data-i18n="Router">Router [ NAS ]</div>
+              </a>
+            </li>
+
+            <!-- OLT Management -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-network"></i>
+                <div data-i18n="OLT">Data OLT</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="olt-list.html" class="menu-link">
+                    <i class="ti ti-device-desktop-analytics"></i>
+                    <div data-i18n="OLT">OLT</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="odf-list.html" class="menu-link">
+                    <i class="ti ti-topology-star"></i>
+                    <div data-i18n="ODF">ODF</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="odc-list.html" class="menu-link">
+                    <i class="ti ti-building-warehouse"></i>
+                    <div data-i18n="ODC">ODC</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="odp-list.html" class="menu-link">
+                    <i class="ti ti-map-pin"></i>
+                    <div data-i18n="ODP">ODP</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Service Profiles -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-package"></i>
+                <div data-i18n="Profiles">Profil Paket</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="profile-bandwidth.html" class="menu-link">
+                    <div data-i18n="Bandwidth">Bandwidth</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="profile-group.html" class="menu-link">
+                    <div data-i18n="Group">Grup Profil</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="profile-hotspot.html" class="menu-link">
+                    <div data-i18n="Hotspot">Profil Hotspot</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="profile-ppp.html" class="menu-link">
+                    <div data-i18n="PPP">Profil PPP</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Customers -->
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Customer Management</span>
+            </li>
+
+            <li class="menu-item active open">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-users-group"></i>
+                <div data-i18n="Customers">List Pelanggan</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="customers-hotspot.html" class="menu-link">
+                    <div data-i18n="Hotspot Users">User Hotspot</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="customers-ppp.html" class="menu-link">
+                    <div data-i18n="PPP Users">User PPP</div>
+                  </a>
+                </li>
+                <li class="menu-item active">
+                  <a href="customers-map.html" class="menu-link">
+                    <div data-i18n="Map">Peta Pelanggan</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Vouchers -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-ticket"></i>
+                <div data-i18n="Vouchers">Kartu Voucher</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="voucher-hotspot.html" class="menu-link">
+                    <div data-i18n="Hotspot Voucher">Voucher Hotspot</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="voucher-ppp.html" class="menu-link">
+                    <div data-i18n="PPP Voucher">Voucher PPP</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Billing -->
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Financial</span>
+            </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-file-invoice"></i>
+                <div data-i18n="Billing">Data Tagihan</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#allInvoiceModal" class="menu-link">
+                    <div data-i18n="All Invoices">Semua Tagihan</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#periodInvoiceModal" class="menu-link">
+                    <div data-i18n="Period Invoices">Tagihan Periode</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-currency-dollar"></i>
+                <div data-i18n="Finance">Data Keuangan</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#dailyReportModal" class="menu-link">
+                    <div data-i18n="Daily Income">Income Harian</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#periodReportModal" class="menu-link">
+                    <div data-i18n="Period Income">Income Periode</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="expense.html" class="menu-link">
+                    <div data-i18n="Expense">Pengeluaran</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="profit-loss.html" class="menu-link">
+                    <div data-i18n="Profit">Laba Rugi</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Support & Tools -->
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Support & Tools</span>
+            </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-headset"></i>
+                <div data-i18n="Tickets">Tiket Laporan</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="tickets-all.html" class="menu-link">
+                    <div data-i18n="All Tickets">Semua Tiket</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="tickets-open.html" class="menu-link">
+                    <div data-i18n="Open">Tiket Aktif</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="tickets-closed.html" class="menu-link">
+                    <div data-i18n="Closed">Tiket Ditutup</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-tools"></i>
+                <div data-i18n="Tools">Tool Sistem</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#usageCheckModal" class="menu-link">
+                    <div data-i18n="Usage Check">Cek Pemakaian</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="import-users.html" class="menu-link">
+                    <div data-i18n="Import">Impor User</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#exportModal" class="menu-link">
+                    <div data-i18n="Export">Ekspor User</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- System Logs -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-file-text"></i>
+                <div data-i18n="Logs">Log Aplikasi</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="logs-login.html" class="menu-link">
+                    <div data-i18n="Login">Log Login</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="logs-activity.html" class="menu-link">
+                    <div data-i18n="Activity">Log Aktivitas</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="logs-radius.html" class="menu-link">
+                    <div data-i18n="Radius">Log Auth Radius</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </aside>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+          <nav
+            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar">
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="ti ti-menu-2 ti-sm"></i>
+              </a>
+            </div>
+
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <!-- Search -->
+              <div class="navbar-nav align-items-center">
+                <div class="nav-item navbar-search-wrapper mb-0">
+                  <a class="nav-item nav-link search-toggler d-flex align-items-center px-0" href="javascript:void(0);">
+                    <i class="ti ti-search ti-md me-2"></i>
+                    <span class="d-none d-md-inline-block text-muted">Search (Ctrl+/)</span>
+                  </a>
+                </div>
+              </div>
+              <!-- /Search -->
+
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- Language -->
+                <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <i class="ti ti-language rounded-circle ti-md"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="javascript:void(0);" data-language="en">
+                        <span class="align-middle">English</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="javascript:void(0);" data-language="id">
+                        <span class="align-middle">Indonesia</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!--/ Language -->
+
+                <!-- Style Switcher -->
+                <li class="nav-item dropdown-style-switcher dropdown me-2 me-xl-0">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <i class="ti ti-md"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-styles">
+                    <li>
+                      <a class="dropdown-item" href="javascript:void(0);" data-theme="light">
+                        <span class="align-middle"><i class="ti ti-sun me-2"></i>Light</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="javascript:void(0);" data-theme="dark">
+                        <span class="align-middle"><i class="ti ti-moon me-2"></i>Dark</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="javascript:void(0);" data-theme="system">
+                        <span class="align-middle"><i class="ti ti-device-desktop me-2"></i>System</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!-- / Style Switcher-->
+
+                <!-- Quick links  -->
+                <li class="nav-item dropdown-shortcuts navbar-dropdown dropdown me-2 me-xl-0">
+                  
+                    class="nav-link dropdown-toggle hide-arrow"
+                    href="javascript:void(0);"
+                    data-bs-toggle="dropdown"
+                    data-bs-auto-close="outside"
+                    aria-expanded="false">
+                    <i class="ti ti-layout-grid-add ti-md"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-end py-0">
+                    <div class="dropdown-menu-header border-bottom">
+                      <div class="dropdown-header d-flex align-items-center py-3">
+                        <h5 class="text-body mb-0 me-auto">Shortcuts</h5>
+                        <a href="javascript:void(0)" class="dropdown-shortcuts-add text-body" data-bs-toggle="tooltip" data-bs-placement="top" title="Add shortcuts">
+                          <i class="ti ti-sm ti-apps"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="dropdown-shortcuts-list scrollable-container">
+                      <div class="row row-bordered overflow-visible g-0">
+                        <div class="dropdown-shortcuts-item col">
+                          <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                            <i class="ti ti-users-group fs-4"></i>
+                          </span>
+                          <a href="customers-ppp.html" class="stretched-link">Pelanggan PPP</a>
+                          <small class="text-muted mb-0">User Management</small>
+                        </div>
+                        <div class="dropdown-shortcuts-item col">
+                          <span class="dropdown-shortcuts-icon rounded-circle mb-2">
+                            <i class="ti ti-map fs-4"></i>
+                          </span>
+                          <a href="customers-map.html" class="stretched-link">Peta</a>
+                          <small class="text-muted mb-0">Customer Location</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <!-- Quick links -->
+
+                <!-- Notification -->
+                <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1">
+                  
+                    class="nav-link dropdown-toggle hide-arrow"
+                    href="javascript:void(0);"
+                    data-bs-toggle="dropdown"
+                    data-bs-auto-close="outside"
+                    aria-expanded="false">
+                    <i class="ti ti-bell ti-md"></i>
+                    <span class="badge bg-danger rounded-pill badge-notifications">3</span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end py-0">
+                    <li class="dropdown-menu-header border-bottom">
+                      <div class="dropdown-header d-flex align-items-center py-3">
+                        <h5 class="text-body mb-0 me-auto">Notification</h5>
+                        <a href="javascript:void(0)" class="dropdown-notifications-all text-body" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark all as read">
+                          <i class="ti ti-mail-opened fs-4"></i>
+                        </a>
+                      </div>
+                    </li>
+                    <li class="dropdown-notifications-list scrollable-container">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                          <div class="d-flex">
+                            <div class="flex-shrink-0 me-3">
+                              <div class="avatar">
+                                <span class="avatar-initial rounded-circle bg-label-info">
+                                  <i class="ti ti-map-pin"></i>
+                                </span>
+                              </div>
+                            </div>
+                            <div class="flex-grow-1">
+                              <h6 class="mb-1">New Location Added</h6>
+                              <p class="mb-0">Customer location marked on map</p>
+                              <small class="text-muted">2 hours ago</small>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="dropdown-menu-footer border-top">
+                      <a href="javascript:void(0);" class="dropdown-item d-flex justify-content-center text-primary p-2 h-px-40 mb-1 align-items-center">
+                        View all notifications
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!--/ Notification -->
+
+                <!-- User -->
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="../../assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="pages-account-settings-account.html">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                              <img src="../../assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+                            </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <span class="fw-medium d-block">John Doe</span>
+                            <small class="text-muted">Admin</small>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="pages-profile-user.html">
+                        <i class="ti ti-user-check me-2 ti-sm"></i>
+                        <span class="align-middle">My Profile</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="pages-account-settings-account.html">
+                        <i class="ti ti-settings me-2 ti-sm"></i>
+                        <span class="align-middle">Settings</span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="auth-login-cover.html" target="_blank">
+                        <i class="ti ti-logout me-2 ti-sm"></i>
+                        <span class="align-middle">Log Out</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!--/ User -->
+              </ul>
+            </div>
+
+            <!-- Search Small Screens -->
+            <div class="navbar-search-wrapper search-input-wrapper d-none">
+              <input
+                type="text"
+                class="form-control search-input container-xxl border-0"
+                placeholder="Search..."
+                aria-label="Search..." />
+              <i class="ti ti-x ti-sm search-toggler cursor-pointer"></i>
+            </div>
+          </nav>
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <!-- Header -->
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="fw-bold py-3 mb-0">
+                  <span class="text-muted fw-light">List Pelanggan /</span> Peta Pelanggan
+                </h4>
+                <button type="button" class="btn btn-primary" id="btnAddMarker">
+                  <i class="ti ti-plus me-1"></i> Tambah Penanda
+                </button>
+              </div>
+
+              <!-- Customer Map Card -->
+              <div class="card">
+                <div class="card-body">
+                  <!-- Add Marker Form (Hidden by default) -->
+                  <div id="addMarkerForm" class="mb-4" style="display: none;">
+                    <div class="alert alert-info mb-3">
+                      <i class="ti ti-info-circle me-2"></i>
+                      <strong>Klik area lokasi pada peta</strong> sesuai lokasi pelanggan yang akan ditambahkan, lalu isi ID PELANGGAN pada form dan klik tombol TAMBAH PIN
+                    </div>
+                    <form id="formAddMarker">
+                      <div class="row g-3">
+                        <div class="col-md-3">
+                          <label class="form-label" for="customerId">
+                            <i class="ti ti-user me-1 text-primary"></i>ID Pelanggan
+                          </label>
+                          <input type="text" class="form-control" id="customerId" placeholder="ID Pelanggan" required>
+                        </div>
+                        <div class="col-md-3">
+                          <label class="form-label" for="odpId">ODP | POP (Optional)</label>
+                          <select class="form-select" id="odpId">
+                            <option value="0">- Tanpa ODP | POP -</option>
+                            <option value="1">ODP73 - GPON CISALADAH</option>
+                            <option value="2">ODP35 - GPON KACA-KACA</option>
+                            <option value="3">ODP48 - GPON CISALADAH</option>
+                          </select>
+                        </div>
+                        <div class="col-md-2">
+                          <label class="form-label" for="latitude">Latitude</label>
+                          <input type="text" class="form-control" id="latitude" placeholder="-0.0000000" readonly>
+                        </div>
+                        <div class="col-md-2">
+                          <label class="form-label" for="longitude">Longitude</label>
+                          <input type="text" class="form-control" id="longitude" placeholder="0.0000000" readonly>
+                        </div>
+                        <div class="col-md-2 d-flex align-items-end">
+                          <button type="submit" class="btn btn-success w-100">
+                            <i class="ti ti-map-pin me-1"></i>Tambah Pin
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                    <div class="mt-2">
+                      <a href="javascript:void(0);" id="hideForm" class="text-muted">
+                        <i class="ti ti-eye-off me-1"></i>Sembunyikan Form
+                      </a>
+                    </div>
+                    <hr class="my-3">
+                  </div>
+
+                  <!-- Filter Buttons -->
+                  <div class="d-flex flex-wrap gap-2 mb-3">
+                    <button type="button" class="btn btn-primary active" id="btnAll">
+                      <i class="ti ti-users me-1"></i>Semua
+                    </button>
+                    <button type="button" class="btn btn-outline-success" id="btnPPP">
+                      <i class="ti ti-plug me-1"></i>PPP
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" id="btnHotspot">
+                      <i class="ti ti-wifi me-1"></i>HOTSPOT
+                    </button>
+                  </div>
+
+                  <!-- Search Box -->
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="searchCustomer" placeholder="Customer ID, Username or Fullname, ODP Name or ODP Area">
+                        <button class="btn btn-primary" type="button" id="btnSearch">
+                          <i class="ti ti-search"></i> Cari
+                        </button>
+                      </div>
+                      <small class="text-muted">Search by: Customer ID / Username / Fullname / ODP Name / ODP Area</small>
+                    </div>
+                  </div>
+
+                  <hr class="my-3">
+
+                  <!-- Map Container -->
+                  <div id="map" class="mb-3"></div>
+                </div>
+              </div>
+            </div>
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl">
+                <div class="footer-container d-flex align-items-center justify-content-between py-2 flex-md-row flex-column">
+                  <div>
+                    © <script>document.write(new Date().getFullYear())</script>
+                    , made with ❤️ by <a href="https://pixinvent.com" target="_blank" class="footer-link text-primary fw-medium">Pixinvent</a>
+                  </div>
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+
+      <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+      <div class="drag-target"></div>
+    </div>
+    <!-- / Layout wrapper -->
+
+    <!-- Core JS -->
+    <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../../assets/vendor/js/bootstrap.js"></script>
+    <script src="../../assets/vendor/libs/node-waves/node-waves.js"></script>
+    <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../../assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="../../assets/vendor/libs/i18n/i18n.js"></script>
+    <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="../../assets/vendor/js/menu.js"></script>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Main JS -->
+    <script src="../../assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script>
+      $(document).ready(function() {
+        // Initialize Map
+        var map = L.map('map').setView([-6.9175, 107.6191], 13); // Default: Bandung, Indonesia
+        
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors',
+          maxZoom: 19
+        }).addTo(map);
+
+        // Sample customer data
+        var customers = [
+          {
+            id: '259222477350',
+            name: 'AFIFAH HIYARIN NISWAH',
+            package: 'NET HOME 30Mbps',
+            type: 'PPP',
+            lat: -6.9147,
+            lng: 107.6098
+          },
+          {
+            id: '256266516430',
+            name: 'DANI SAEFUL ROHMAN',
+            package: 'NET HOME 10Mbps',
+            type: 'PPP',
+            lat: -6.9175,
+            lng: 107.6191
+          },
+          {
+            id: '259197955731',
+            name: 'ELIS SUNARTI',
+            package: 'DW HOME 10Mbps',
+            type: 'PPP',
+            lat: -6.9203,
+            lng: 107.6284
+          },
+          {
+            id: '2312511234',
+            name: 'nazad nuria akromallah',
+            package: 'DW HOME 10Mbps',
+            type: 'PPP',
+            lat: -6.9131,
+            lng: 107.6150
+          },
+          {
+            id: '259185274939',
+            name: 'PUJIYANTI',
+            package: 'NET HOME 10Mbps',
+            type: 'HOTSPOT',
+            lat: -6.9189,
+            lng: 107.6230
+          }
+        ];
+
+        var markers = [];
+        var currentFilter = 'all';
+
+        // Custom marker icons
+        var pppIcon = L.divIcon({
+          html: '<i class="ti ti-plug" style="color: #28a745; font-size: 24px;"></i>',
+          className: 'custom-marker',
+          iconSize: [30, 30]
+        });
+
+        var hotspotIcon = L.divIcon({
+          html: '<i class="ti ti-wifi" style="color: #dc3545; font-size: 24px;"></i>',
+          className: 'custom-marker',
+          iconSize: [30, 30]
+        });
+
+        // Add markers to map
+        function addMarkers(filter = 'all') {
+          // Clear existing markers
+          markers.forEach(m => map.removeLayer(m));
+          markers = [];
+
+          customers.forEach(function(customer) {
+            if (filter !== 'all' && customer.type !== filter) {
+              return;
+            }
+
+            var icon = customer.type === 'PPP' ? pppIcon : hotspotIcon;
+            var marker = L.marker([customer.lat, customer.lng], { icon: icon }).addTo(map);
+            
+            var popupContent = `
+              <div style="min-width: 200px;">
+                <strong>${customer.id}</strong><br>
+                <i class="ti ti-user me-1"></i>${customer.name}<br>
+                <i class="ti ti-package me-1"></i>${customer.package}<br>
+                <span class="badge bg-label-${customer.type === 'PPP' ? 'success' : 'danger'} mt-1">${customer.type}</span>
+              </div>
+            `;
+            
+            marker.bindPopup(popupContent);
+            markers.push(marker);
+          });
+        }
+
+        // Initialize markers
+        addMarkers();
+
+        // Filter buttons
+        $('#btnAll').on('click', function() {
+          $('.btn-primary, .btn-outline-success, .btn-outline-danger').removeClass('active btn-primary btn-success btn-danger').addClass('btn-outline-primary');
+          $(this).removeClass('btn-outline-primary').addClass('btn-primary active');
+          currentFilter = 'all';
+          addMarkers('all');
+        });
+
+        $('#btnPPP').on('click', function() {
+          $('.btn-primary, .btn-outline-success, .btn-outline-danger').removeClass('active btn-primary btn-success btn-danger').addClass('btn-outline-success');
+          $(this).removeClass('btn-outline-success').addClass('btn-success active');
+          currentFilter = 'PPP';
+          addMarkers('PPP');
+        });
+
+        $('#btnHotspot').on('click', function() {
+          $('.btn-primary, .btn-outline-success, .btn-outline-danger').removeClass('active btn-primary btn-success btn-danger').addClass('btn-outline-danger');
+          $(this).removeClass('btn-outline-danger').addClass('btn-danger active');
+          currentFilter = 'HOTSPOT';
+          addMarkers('HOTSPOT');
+        });
+
+        // Search functionality
+        $('#btnSearch').on('click', function() {
+          var searchTerm = $('#searchCustomer').val().toLowerCase();
+          if (!searchTerm) return;
+
+          var found = customers.find(c => 
+            c.id.toLowerCase().includes(searchTerm) || 
+            c.name.toLowerCase().includes(searchTerm)
+          );
+
+          if (found) {
+            map.setView([found.lat, found.lng], 16);
+            markers.forEach(m => {
+              if (m.getLatLng().lat === found.lat && m.getLatLng().lng === found.lng) {
+                m.openPopup();
+              }
+            });
+          } else {
+            alert('Pelanggan tidak ditemukan');
+          }
+        });
+
+        // Add marker form
+        $('#btnAddMarker').on('click', function() {
+          $('#addMarkerForm').slideToggle();
+        });
+
+        $('#hideForm').on('click', function() {
+          $('#addMarkerForm').slideUp();
+        });
+
+        // Click map to get coordinates
+        var tempMarker = null;
+        map.on('click', function(e) {
+          if ($('#addMarkerForm').is(':visible')) {
+            $('#latitude').val(e.latlng.lat.toFixed(7));
+            $('#longitude').val(e.latlng.lng.toFixed(7));
+
+            // Remove temp marker if exists
+            if (tempMarker) {
+              map.removeLayer(tempMarker);
+            }
+
+            // Add temp marker
+            tempMarker = L.marker(e.latlng, {
+              icon: L.divIcon({
+                html: '<i class="ti ti-map-pin" style="color: #696cff; font-size: 32px;"></i>',
+                className: 'temp-marker',
+                iconSize: [32, 32]
+              })
+            }).addTo(map);
+          }
+        });
+
+        // Submit add marker form
+        $('#formAddMarker').on('submit', function(e) {
+          e.preventDefault();
+          
+          var customerId = $('#customerId').val();
+          var lat = parseFloat($('#latitude').val());
+          var lng = parseFloat($('#longitude').val());
+
+          if (!customerId || !lat || !lng) {
+            alert('Mohon lengkapi semua field yang diperlukan');
+            return;
+          }
+
+          // Here you would typically send this to your backend
+          alert('Marker berhasil ditambahkan untuk Customer ID: ' + customerId);
+          
+          // Reset form
+          $('#formAddMarker')[0].reset();
+          if (tempMarker) {
+            map.removeLayer(tempMarker);
+            tempMarker = null;
+          }
+          $('#addMarkerForm').slideUp();
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="light-style layout-navbar-fixed layout-menu-fixed layout-compact"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../../assets/"
+  data-template="vertical-menu-template">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Tambah Profil Paket | ISP Management Dashboard</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&ampdisplay=swap"
+      rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/tabler-icons.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/libs/node-waves/node-waves.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/select2/select2.css" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="../../assets/vendor/js/helpers.js"></script>
+    <script src="../../assets/vendor/js/template-customizer.js"></script>
+    <script src="../../assets/js/config.js"></script>
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="index.html" class="app-brand-link">
+              <span class="app-brand-logo demo">
+                <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M0.00172773 0V6.85398C0.00172773 6.85398 -0.133178 9.01207 1.98092 10.8388L13.6912 21.9964L19.7809 21.9181L18.8042 9.88248L16.4951 7.17289L9.23799 0H0.00172773Z"
+                    fill="#7367F0" />
+                  <path
+                    opacity="0.06"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.69824 16.4364L12.5199 3.23696L16.5541 7.25596L7.69824 16.4364Z"
+                    fill="#161616" />
+                  <path
+                    opacity="0.06"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M8.07751 15.9175L13.9419 4.63989L16.5849 7.28475L8.07751 15.9175Z"
+                    fill="#161616" />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.77295 16.3566L23.6563 0H32V6.88383C32 6.88383 31.8262 9.17836 30.6591 10.4057L19.7824 22H13.6938L7.77295 16.3566Z"
+                    fill="#7367F0" />
+                </svg>
+              </span>
+              <span class="app-brand-text demo menu-text fw-bold">MIXRADIUS</span>
+            </a>
+
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+              <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
+              <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
+            </a>
+          </div>
+
+          <div class="menu-inner-shadow"></div>
+
+          <ul class="menu-inner py-1">
+            <!-- Session User -->
+            <li class="menu-item">
+              <a href="session-user.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-users"></i>
+                <div data-i18n="Session User">Session User</div>
+              </a>
+            </li>
+
+            <!-- Dashboards -->
+            <li class="menu-item">
+              <a href="index.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <div data-i18n="Dashboard">Dashboard</div>
+                <div class="badge bg-label-success fs-tiny rounded-pill ms-auto">New</div>
+              </a>
+            </li>
+
+            <!-- Pengaturan -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-settings"></i>
+                <div data-i18n="Pengaturan">Pengaturan</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="settings-general.html" class="menu-link">
+                    <div data-i18n="General">General</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="settings-backup.html" class="menu-link">
+                    <div data-i18n="Backup">Backup</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Router NAS -->
+            <li class="menu-item">
+              <a href="router-nas.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-router"></i>
+                <div data-i18n="Router [NAS]">Router [NAS]</div>
+              </a>
+            </li>
+
+            <!-- Data ODP | POP -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-network"></i>
+                <div data-i18n="Data ODP | POP">Data ODP | POP</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="odp-list.html" class="menu-link">
+                    <div data-i18n="ODP">ODP</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pop-list.html" class="menu-link">
+                    <div data-i18n="POP">POP</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Profil Paket -->
+            <li class="menu-item active open">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-package"></i>
+                <div data-i18n="Profil Paket">Profil Paket</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="bandwidth.html" class="menu-link">
+                    <div data-i18n="Bandwidth">Bandwidth</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="group-profile.html" class="menu-link">
+                    <div data-i18n="Grup Profil">Grup Profil</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="profil-hotspot.html" class="menu-link">
+                    <div data-i18n="Profil Hotspot">Profil Hotspot</div>
+                  </a>
+                </li>
+                <li class="menu-item active">
+                  <a href="profil-ppp.html" class="menu-link">
+                    <div data-i18n="Profil PPP">Profil PPP</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- List Pelanggan -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-users-group"></i>
+                <div data-i18n="List Pelanggan">List Pelanggan</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="customers-ppp.html" class="menu-link">
+                    <div data-i18n="Pelanggan PPP">Pelanggan PPP</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="customers-hotspot.html" class="menu-link">
+                    <div data-i18n="Pelanggan Hotspot">Pelanggan Hotspot</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Kartu Voucher -->
+            <li class="menu-item">
+              <a href="voucher.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-ticket"></i>
+                <div data-i18n="Kartu Voucher">Kartu Voucher</div>
+              </a>
+            </li>
+
+            <!-- Data Tagihan -->
+            <li class="menu-item">
+              <a href="billing.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-file-invoice"></i>
+                <div data-i18n="Data Tagihan">Data Tagihan</div>
+              </a>
+            </li>
+
+            <!-- Data Keuangan -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-coin"></i>
+                <div data-i18n="Data Keuangan">Data Keuangan</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="income.html" class="menu-link">
+                    <div data-i18n="Pemasukan">Pemasukan</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="expense.html" class="menu-link">
+                    <div data-i18n="Pengeluaran">Pengeluaran</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Online Payment -->
+            <li class="menu-item">
+              <a href="online-payment.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-credit-card"></i>
+                <div data-i18n="Online Payment">Online Payment</div>
+              </a>
+            </li>
+
+            <!-- Tiket Laporan -->
+            <li class="menu-item">
+              <a href="tickets.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-lifebuoy"></i>
+                <div data-i18n="Tiket Laporan">Tiket Laporan</div>
+              </a>
+            </li>
+
+            <!-- Tool Sistem -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-tool"></i>
+                <div data-i18n="Tool Sistem">Tool Sistem</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="ping-tool.html" class="menu-link">
+                    <div data-i18n="Ping">Ping</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="traceroute.html" class="menu-link">
+                    <div data-i18n="Traceroute">Traceroute</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Log Aplikasi -->
+            <li class="menu-item">
+              <a href="logs.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-file-text"></i>
+                <div data-i18n="Log Aplikasi">Log Aplikasi</div>
+              </a>
+            </li>
+
+            <!-- List Neighbor -->
+            <li class="menu-item">
+              <a href="neighbors.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-topology-star"></i>
+                <div data-i18n="List Neighbor">List Neighbor</div>
+              </a>
+            </li>
+          </ul>
+        </aside>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+          <nav
+            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar">
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="ti ti-menu-2 ti-sm"></i>
+              </a>
+            </div>
+
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <!-- Search -->
+              <div class="navbar-nav align-items-center">
+                <div class="nav-item navbar-search-wrapper mb-0">
+                  <a class="nav-item nav-link search-toggler d-flex align-items-center px-0" href="javascript:void(0);">
+                    <i class="ti ti-search ti-md me-2"></i>
+                    <span class="d-none d-md-inline-block text-muted">Search (Ctrl+/)</span>
+                  </a>
+                </div>
+              </div>
+              <!-- /Search -->
+
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- Language -->
+                <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <i class="fi fi-id fis rounded-circle fs-3 me-1"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item active" href="javascript:void(0);" data-language="id">
+                        <i class="fi fi-id fis rounded-circle fs-4 me-1"></i>
+                        <span class="align-middle">Indonesia</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!--/ Language -->
+
+                <!-- Style Switcher -->
+                <li class="nav-item dropdown-style-switcher dropdown me-2 me-xl-0">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <i class="ti ti-md"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-styles">
+                    <li>
+                      <a class="dropdown-item" href="javascript:void(0);" data-theme="light">
+                        <span class="align-middle"><i class="ti ti-sun me-2"></i>Light</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="javascript:void(0);" data-theme="dark">
+                        <span class="align-middle"><i class="ti ti-moon me-2"></i>Dark</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!-- / Style Switcher-->
+
+                <!-- User -->
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="../../assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="pages-account-settings-account.html">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                              <img src="../../assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+                            </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <span class="fw-medium d-block">mixradius</span>
+                            <small class="text-muted">Logged in</small>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="auth-login-cover.html" target="_blank">
+                        <i class="ti ti-logout me-2 ti-sm"></i>
+                        <span class="align-middle">Log Out</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!--/ User -->
+              </ul>
+            </div>
+
+            <!-- Search Small Screens -->
+            <div class="navbar-search-wrapper search-input-wrapper d-none">
+              <input
+                type="text"
+                class="form-control search-input container-xxl border-0"
+                placeholder="Search..."
+                aria-label="Search..." />
+              <i class="ti ti-x ti-sm search-toggler cursor-pointer"></i>
+            </div>
+          </nav>
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="fw-bold"><span class="text-muted fw-light">Profil Paket /</span> Tambah Profil Paket</h4>
+              </div>
+
+              <!-- Add Profil Paket Card -->
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title mb-0">Tambah Profil Paket PPP</h5>
+                </div>
+                <div class="card-body">
+                  <form id="formProfilPaket" onsubmit="return handleSubmit(event)">
+                    <div class="row">
+                      <!-- Nama Profil -->
+                      <div class="col-md-6 mb-3">
+                        <label for="namaProfil" class="form-label">Nama Profil <span class="text-danger">*</span></label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="namaProfil"
+                          name="namaProfil"
+                          placeholder="Contoh: NET HOME 20Mbps-P"
+                          required />
+                      </div>
+
+                      <!-- Grup Profil -->
+                      <div class="col-md-6 mb-3">
+                        <label for="grupProfil" class="form-label">Grup Profil <span class="text-danger">*</span></label>
+                        <select class="form-select" id="grupProfil" name="grupProfil" required>
+                          <option value="">Pilih Grup Profil...</option>
+                          <option value="PRIORITAS JDN 2">PRIORITAS JDN 2</option>
+                          <option value="PRIORITAS JDN">PRIORITAS JDN</option>
+                          <option value="Durifauli">Durifauli</option>
+                          <option value="Demo">Demo</option>
+                        </select>
+                      </div>
+
+                      <!-- Bandwidth -->
+                      <div class="col-md-6 mb-3">
+                        <label for="bandwidth" class="form-label">Bandwidth <span class="text-danger">*</span></label>
+                        <select class="form-select" id="bandwidth" name="bandwidth" required>
+                          <option value="">Pilih Bandwidth...</option>
+                          <option value="1Gb">1 Gb</option>
+                          <option value="500Mbps">500 Mbps</option>
+                          <option value="200Mbps">200 Mbps</option>
+                          <option value="100Mbps">100 Mbps</option>
+                          <option value="50Mbps">50 Mbps</option>
+                          <option value="40Mbps">40 Mbps</option>
+                          <option value="30Mbps">30 Mbps</option>
+                          <option value="20Mbps">20 Mbps</option>
+                          <option value="10Mbps">10 Mbps</option>
+                          <option value="5Mbps">5 Mbps</option>
+                        </select>
+                      </div>
+
+                      <!-- Masa Aktif -->
+                      <div class="col-md-6 mb-3">
+                        <label for="masaAktif" class="form-label">Masa Aktif <span class="text-danger">*</span></label>
+                        <select class="form-select" id="masaAktif" name="masaAktif" required>
+                          <option value="">Pilih Masa Aktif...</option>
+                          <option value="1 Hari">1 Hari</option>
+                          <option value="3 Hari">3 Hari</option>
+                          <option value="7 Hari">7 Hari</option>
+                          <option value="15 Hari">15 Hari</option>
+                          <option value="1 Bulan" selected>1 Bulan</option>
+                          <option value="2 Bulan">2 Bulan</option>
+                          <option value="3 Bulan">3 Bulan</option>
+                          <option value="6 Bulan">6 Bulan</option>
+                          <option value="1 Tahun">1 Tahun</option>
+                        </select>
+                      </div>
+
+                      <!-- Harga Modal -->
+                      <div class="col-md-6 mb-3">
+                        <label for="hargaModal" class="form-label">Harga Modal <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                          <span class="input-group-text">Rp</span>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="hargaModal"
+                            name="hargaModal"
+                            placeholder="0"
+                            step="0.01"
+                            required />
+                        </div>
+                      </div>
+
+                      <!-- Harga Jual -->
+                      <div class="col-md-6 mb-3">
+                        <label for="hargaJual" class="form-label">Harga Jual <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                          <span class="input-group-text">Rp</span>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="hargaJual"
+                            name="hargaJual"
+                            placeholder="0"
+                            step="0.01"
+                            required />
+                        </div>
+                      </div>
+
+                      <!-- Shared Users -->
+                      <div class="col-md-6 mb-3">
+                        <label for="sharedUsers" class="form-label">Shared Users <span class="text-danger">*</span></label>
+                        <select class="form-select" id="sharedUsers" name="sharedUsers" required>
+                          <option value="">Pilih Shared Users...</option>
+                          <option value="Single Device" selected>Single Device</option>
+                          <option value="2 Devices">2 Devices</option>
+                          <option value="3 Devices">3 Devices</option>
+                          <option value="5 Devices">5 Devices</option>
+                          <option value="Unlimited">Unlimited</option>
+                        </select>
+                      </div>
+
+                      <!-- Owner Data -->
+                      <div class="col-md-6 mb-3">
+                        <label for="ownerData" class="form-label">Owner Data <span class="text-danger">*</span></label>
+                        <select class="form-select" id="ownerData" name="ownerData" required>
+                          <option value="">Pilih Owner Data...</option>
+                          <option value="mixradius" selected>mixradius</option>
+                          <option value="admin@jeger">admin@jeger</option>
+                          <option value="durifauli">durifauli</option>
+                        </select>
+                      </div>
+
+                      <!-- Keterangan -->
+                      <div class="col-md-12 mb-3">
+                        <label for="keterangan" class="form-label">Keterangan (Optional)</label>
+                        <textarea
+                          class="form-control"
+                          id="keterangan"
+                          name="keterangan"
+                          rows="3"
+                          placeholder="Tambahkan keterangan atau catatan untuk paket ini..."></textarea>
+                      </div>
+
+                      <!-- Advanced Settings -->
+                      <div class="col-md-12 mb-3">
+                        <div class="accordion" id="advancedSettings">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingAdvanced">
+                              <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseAdvanced"
+                                aria-expanded="false"
+                                aria-controls="collapseAdvanced">
+                                <i class="ti ti-settings me-2"></i>
+                                Pengaturan Lanjutan (Optional)
+                              </button>
+                            </h2>
+                            <div
+                              id="collapseAdvanced"
+                              class="accordion-collapse collapse"
+                              aria-labelledby="headingAdvanced"
+                              data-bs-parent="#advancedSettings">
+                              <div class="accordion-body">
+                                <div class="row">
+                                  <div class="col-md-6 mb-3">
+                                    <label for="priorityQueue" class="form-label">Priority Queue</label>
+                                    <select class="form-select" id="priorityQueue" name="priorityQueue">
+                                      <option value="">Default</option>
+                                      <option value="1">Priority 1 (Highest)</option>
+                                      <option value="2">Priority 2</option>
+                                      <option value="3">Priority 3</option>
+                                      <option value="4">Priority 4 (Normal)</option>
+                                      <option value="5">Priority 5 (Lowest)</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-md-6 mb-3">
+                                    <label for="burstLimit" class="form-label">Burst Limit</label>
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      id="burstLimit"
+                                      name="burstLimit"
+                                      placeholder="Contoh: 50M/50M" />
+                                  </div>
+                                  <div class="col-md-6 mb-3">
+                                    <label for="burstThreshold" class="form-label">Burst Threshold</label>
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      id="burstThreshold"
+                                      name="burstThreshold"
+                                      placeholder="Contoh: 40M/40M" />
+                                  </div>
+                                  <div class="col-md-6 mb-3">
+                                    <label for="burstTime" class="form-label">Burst Time</label>
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      id="burstTime"
+                                      name="burstTime"
+                                      placeholder="Contoh: 8s/8s" />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="d-flex gap-2 mt-4">
+                      <button type="submit" class="btn btn-primary">
+                        <i class="ti ti-plus me-1"></i>Tambah Profil Paket
+                      </button>
+                      <a href="profil-ppp.html" class="btn btn-outline-secondary">Or Batal</a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!--/ Add Profil Paket Card -->
+            </div>
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl">
+                <div
+                  class="footer-container d-flex align-items-center justify-content-between py-2 flex-md-row flex-column">
+                  <div>
+                    Copyright © 2025
+                    <a href="https://mixradius.com" target="_blank" class="fw-medium">MIXRADIUS MANAGER</a> V3.1
+                  </div>
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+
+      <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+      <div class="drag-target"></div>
+    </div>
+    <!-- / Layout wrapper -->
+
+    <!-- Core JS -->
+    <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../../assets/vendor/js/bootstrap.js"></script>
+    <script src="../../assets/vendor/libs/node-waves/node-waves.js"></script>
+    <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../../assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="../../assets/vendor/libs/i18n/i18n.js"></script>
+    <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="../../assets/vendor/js/menu.js"></script>
+
+    <!-- Vendors JS -->
+    <script src="../../assets/vendor/libs/select2/select2.js"></script>
+
+    <!-- Main JS -->
+    <script src="../../assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script>
+      $(document).ready(function () {
+        // Initialize Select2
+        $('.form-select').select2({
+          theme: 'bootstrap-5',
+          width: '100%'
+        });
+
+        // Auto-calculate profit margin
+        $('#hargaModal, #hargaJual').on('input', function () {
+          const modal = parseFloat($('#hargaModal').val()) || 0;
+          const jual = parseFloat($('#hargaJual').val()) || 0;
+          const profit = jual - modal;
+          const margin = modal > 0 ? ((profit / modal) * 100).toFixed(2) : 0;
+
+          console.log(`Modal: Rp ${modal.toLocaleString()}, Jual: Rp ${jual.toLocaleString()}, Profit: Rp ${profit.toLocaleString()} (${margin}%)`);
+        });
+      });
+
+      function handleSubmit(event) {
+        event.preventDefault();
+
+        // Get form data
+        const formData = {
+          namaProfil: $('#namaProfil').val(),
+          grupProfil: $('#grupProfil').val(),
+          bandwidth: $('#bandwidth').val(),
+          masaAktif: $('#masaAktif').val(),
+          hargaModal: $('#hargaModal').val(),
+          hargaJual: $('#hargaJual').val(),
+          sharedUsers: $('#sharedUsers').val(),
+          ownerData: $('#ownerData').val(),
+          keterangan: $('#keterangan').val(),
+          // Advanced settings
+          priorityQueue: $('#priorityQueue').val(),
+          burstLimit: $('#burstLimit').val(),
+          burstThreshold: $('#burstThreshold').val(),
+          burstTime: $('#burstTime').val()
+        };
+
+        console.log('Form Data:', formData);
+
+        // Here you would typically send the data to your backend
+        // For now, we'll just show a success message
+        alert('Profil Paket berhasil ditambahkan!\n\n' + 
+              'Nama: ' + formData.namaProfil + '\n' +
+              'Bandwidth: ' + formData.bandwidth + '\n' +
+              'Harga Jual: Rp ' + parseFloat(formData.hargaJual).toLocaleString());
+
+        // Redirect to list page
+        // window.location.href = 'profil-ppp.html';
+
+        return false;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+
+<html
+  lang="en"
+  class="light-style layout-navbar-fixed layout-menu-fixed layout-compact"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../../assets/"
+  data-template="vertical-menu-template">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Detail ODP | ISP Management Dashboard</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&ampdisplay=swap"
+      rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/tabler-icons.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/libs/node-waves/node-waves.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Page CSS -->
+    <style>
+      #odpMap {
+        height: 300px;
+        width: 100%;
+        border-radius: 8px;
+      }
+    </style>
+
+    <!-- Helpers -->
+    <script src="../../assets/vendor/js/helpers.js"></script>
+    <script src="../../assets/vendor/js/template-customizer.js"></script>
+    <script src="../../assets/js/config.js"></script>
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+        <!-- Sidebar Menu Navigation -->
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="index.html" class="app-brand-link">
+              <span class="app-brand-logo demo">
+                <!-- Your Logo SVG Here -->
+              </span>
+              <span class="app-brand-text demo menu-text fw-bold">YourApp</span>
+            </a>
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+              <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
+              <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
+            </a>
+          </div>
+
+          <div class="menu-inner-shadow"></div>
+
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Main Navigation</span>
+            </li>
+            
+            <li class="menu-item">
+              <a href="dashboard.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <div data-i18n="Dashboard">Dashboard</div>
+              </a>
+            </li>
+
+            <!-- Session User -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-users"></i>
+                <div data-i18n="Session User">Session User</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="session-hotspot.html" class="menu-link">
+                    <div data-i18n="Hotspot">Hotspot</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="session-ppp.html" class="menu-link">
+                    <div data-i18n="PPP">PPP</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Settings -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-settings"></i>
+                <div data-i18n="Settings">Pengaturan</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="settings-general.html" class="menu-link">
+                    <div data-i18n="General">Pengaturan Umum</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="settings-users.html" class="menu-link">
+                    <div data-i18n="Users">Manajemen User</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="settings-whatsapp.html" class="menu-link">
+                    <div data-i18n="WhatsApp">WhatsApp API</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="settings-email.html" class="menu-link">
+                    <div data-i18n="Email">Setting Email</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="settings-payment.html" class="menu-link">
+                    <div data-i18n="Payment">Payment Gateway</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Router/NAS -->
+            <li class="menu-item">
+              <a href="routers.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-server"></i>
+                <div data-i18n="Router">Router [ NAS ]</div>
+              </a>
+            </li>
+
+            <!-- OLT Management -->
+            <li class="menu-item active open">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-network"></i>
+                <div data-i18n="OLT">Data OLT</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="olt-list.html" class="menu-link">
+                    <i class="ti ti-device-desktop-analytics"></i>
+                    <div data-i18n="OLT">OLT</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="odf-list.html" class="menu-link">
+                    <i class="ti ti-topology-star"></i>
+                    <div data-i18n="ODF">ODF</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="odc-list.html" class="menu-link">
+                    <i class="ti ti-building-warehouse"></i>
+                    <div data-i18n="ODC">ODC</div>
+                  </a>
+                </li>
+                <li class="menu-item active">
+                  <a href="odp-list.html" class="menu-link">
+                    <i class="ti ti-map-pin"></i>
+                    <div data-i18n="ODP">ODP</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Service Profiles -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-package"></i>
+                <div data-i18n="Profiles">Profil Paket</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="profile-bandwidth.html" class="menu-link">
+                    <div data-i18n="Bandwidth">Bandwidth</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="profile-group.html" class="menu-link">
+                    <div data-i18n="Group">Grup Profil</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="profile-hotspot.html" class="menu-link">
+                    <div data-i18n="Hotspot">Profil Hotspot</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="profile-ppp.html" class="menu-link">
+                    <div data-i18n="PPP">Profil PPP</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Customers -->
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Customer Management</span>
+            </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-users-group"></i>
+                <div data-i18n="Customers">List Pelanggan</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="customers-hotspot.html" class="menu-link">
+                    <div data-i18n="Hotspot Users">User Hotspot</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="customers-ppp.html" class="menu-link">
+                    <div data-i18n="PPP Users">User PPP</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="customers-map.html" class="menu-link">
+                    <div data-i18n="Map">Peta Pelanggan</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Vouchers -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-ticket"></i>
+                <div data-i18n="Vouchers">Kartu Voucher</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="voucher-hotspot.html" class="menu-link">
+                    <div data-i18n="Hotspot Voucher">Voucher Hotspot</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="voucher-ppp.html" class="menu-link">
+                    <div data-i18n="PPP Voucher">Voucher PPP</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Billing -->
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Financial</span>
+            </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-file-invoice"></i>
+                <div data-i18n="Billing">Data Tagihan</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#allInvoiceModal" class="menu-link">
+                    <div data-i18n="All Invoices">Semua Tagihan</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#periodInvoiceModal" class="menu-link">
+                    <div data-i18n="Period Invoices">Tagihan Periode</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-currency-dollar"></i>
+                <div data-i18n="Finance">Data Keuangan</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#dailyReportModal" class="menu-link">
+                    <div data-i18n="Daily Income">Income Harian</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#periodReportModal" class="menu-link">
+                    <div data-i18n="Period Income">Income Periode</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="expense.html" class="menu-link">
+                    <div data-i18n="Expense">Pengeluaran</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="profit-loss.html" class="menu-link">
+                    <div data-i18n="Profit">Laba Rugi</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Support & Tools -->
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Support & Tools</span>
+            </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-headset"></i>
+                <div data-i18n="Tickets">Tiket Laporan</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="tickets-all.html" class="menu-link">
+                    <div data-i18n="All Tickets">Semua Tiket</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="tickets-open.html" class="menu-link">
+                    <div data-i18n="Open">Tiket Aktif</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="tickets-closed.html" class="menu-link">
+                    <div data-i18n="Closed">Tiket Ditutup</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-tools"></i>
+                <div data-i18n="Tools">Tool Sistem</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#usageCheckModal" class="menu-link">
+                    <div data-i18n="Usage Check">Cek Pemakaian</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="import-users.html" class="menu-link">
+                    <div data-i18n="Import">Impor User</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#exportModal" class="menu-link">
+                    <div data-i18n="Export">Ekspor User</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- System Logs -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-file-text"></i>
+                <div data-i18n="Logs">Log Aplikasi</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="logs-login.html" class="menu-link">
+                    <div data-i18n="Login">Log Login</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="logs-activity.html" class="menu-link">
+                    <div data-i18n="Activity">Log Aktivitas</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="logs-radius.html" class="menu-link">
+                    <div data-i18n="Radius">Log Auth Radius</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </aside>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+          <nav
+            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar">
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="ti ti-menu-2 ti-sm"></i>
+              </a>
+            </div>
+
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <!-- Search -->
+              <div class="navbar-nav align-items-center">
+                <div class="nav-item navbar-search-wrapper mb-0">
+                  <a class="nav-item nav-link search-toggler d-flex align-items-center px-0" href="javascript:void(0);">
+                    <i class="ti ti-search ti-md me-2"></i>
+                    <span class="d-none d-md-inline-block text-muted">Search (Ctrl+/)</span>
+                  </a>
+                </div>
+              </div>
+
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- User -->
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="../../assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="auth-login-cover.html" target="_blank">
+                        <i class="ti ti-logout me-2 ti-sm"></i>
+                        <span class="align-middle">Log Out</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <!-- Header -->
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="fw-bold py-3 mb-0">
+                  <span class="text-muted fw-light">Data OLT /</span> Detail ODP Cikutra
+                </h4>
+                <div class="d-flex gap-2">
+                  <a href="odp-list.html" class="btn btn-secondary">
+                    <i class="ti ti-arrow-left me-1"></i> Kembali
+                  </a>
+                  <button type="button" class="btn btn-primary">
+                    <i class="ti ti-edit me-1"></i> Edit ODP
+                  </button>
+                </div>
+              </div>
+
+              <!-- ODP Info Cards -->
+              <div class="row mb-4">
+                <!-- Main Info Card -->
+                <div class="col-lg-8 mb-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <h5 class="mb-0">
+                        <i class="ti ti-building-broadcast-tower me-2"></i>Informasi ODP
+                      </h5>
+                    </div>
+                    <div class="card-body">
+                      <div class="row mb-3">
+                        <div class="col-md-6">
+                          <h6 class="text-muted mb-1">ID ODP</h6>
+                          <p class="mb-0 fw-medium">ODP-001</p>
+                        </div>
+                        <div class="col-md-6">
+                          <h6 class="text-muted mb-1">Nama ODP</h6>
+                          <p class="mb-0 fw-medium">ODP Cikutra</p>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-md-6">
+                          <h6 class="text-muted mb-1">Area / Wilayah</h6>
+                          <p class="mb-0 fw-medium">Cikutra, Bandung</p>
+                        </div>
+                        <div class="col-md-6">
+                          <h6 class="text-muted mb-1">Parent ODC</h6>
+                          <p class="mb-0 fw-medium">ODC Cikutra</p>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-md-12">
+                          <h6 class="text-muted mb-1">Alamat Lengkap</h6>
+                          <p class="mb-0 fw-medium">Jl. Cikutra No. 45, Bandung, Jawa Barat 40124</p>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-md-6">
+                          <h6 class="text-muted mb-1">Koordinat</h6>
+                          <p class="mb-0 fw-medium">-6.9175, 107.6191</p>
+                        </div>
+                        <div class="col-md-6">
+                          <h6 class="text-muted mb-1">Status</h6>
+                          <span class="badge bg-success">Aktif</span>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <h6 class="text-muted mb-1">Splitter Ratio</h6>
+                          <p class="mb-0 fw-medium">1:32</p>
+                        </div>
+                        <div class="col-md-4">
+                          <h6 class="text-muted mb-1">Tipe Kabel</h6>
+                          <p class="mb-0 fw-medium">Outdoor</p>
+                        </div>
+                        <div class="col-md-4">
+                          <h6 class="text-muted mb-1">Dibuat Tanggal</h6>
+                          <p class="mb-0 fw-medium">15 Jan 2025</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Capacity Stats Card -->
+                <div class="col-lg-4 mb-4">
+                  <div class="card h-100">
+                    <div class="card-header">
+                      <h5 class="mb-0">
+                        <i class="ti ti-box me-2"></i>Kapasitas Port
+                      </h5>
+                    </div>
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h3 class="mb-0">32</h3>
+                        <span class="badge bg-label-primary">Total Port</span>
+                      </div>
+                      <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                          <span class="text-muted">Port Terpakai</span>
+                          <span class="fw-medium">28 port</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                          <div class="progress-bar bg-success" style="width: 87.5%"></div>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                          <span class="text-muted">Port Tersedia</span>
+                          <span class="fw-medium">4 port</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                          <div class="progress-bar bg-warning" style="width: 12.5%"></div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="text-center">
+                        <h6 class="mb-2">Utilisasi</h6>
+                        <h2 class="mb-0 text-success">87.5%</h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Map Card -->
+              <div class="row mb-4">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h5 class="mb-0">
+                        <i class="ti ti-map-pin me-2"></i>Lokasi ODP
+                      </h5>
+                    </div>
+                    <div class="card-body">
+                      <div id="odpMap"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Customers Table -->
+              <!-- Customers Table -->
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header border-bottom d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">
+          <i class="ti ti-users-group me-2"></i>Pelanggan Terhubung ke ODP Cikutra
+        </h5>
+        <div class="d-flex gap-2 align-items-center">
+          <span class="badge bg-success">23 Online</span>
+          <span class="badge bg-danger">5 Offline</span>
+          <span class="badge bg-primary">28 Total</span>
+        </div>
+      </div>
+      <div class="card-datatable table-responsive">
+        <table id="customersTable" class="datatables-customers table">
+          <thead>
+            <tr>
+              <th>ID Pelanggan</th>
+              <th>Nama</th>
+              <th>Tipe Service</th>
+              <th>Paket</th>
+              <th>Status</th>
+              <th>Koneksi</th>
+              <th>TX Power</th>
+              <th>RX Power</th>
+              <th>Jatuh Tempo</th>
+              <th>Port</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="#" class="text-primary">259222477350</a>
+              </td>
+              <td>Budi Santoso</td>
+              <td>
+                <span class="badge bg-label-success me-1">PRE</span>
+                PPPOE
+              </td>
+              <td>NET HOME 30Mbps</td>
+              <td><span class="badge bg-success">Aktif</span></td>
+              <td><span class="badge bg-success"><i class="ti ti-wifi me-1"></i>Online</span></td>
+              <td><span class="text-success fw-medium">-18.5 dBm</span></td>
+              <td><span class="text-success fw-medium">-21.3 dBm</span></td>
+              <td>2025-11-05</td>
+              <td><span class="badge bg-label-info">Port 1</span></td>
+              <td>
+                <button class="btn btn-sm btn-icon btn-primary me-1" title="Detail">
+                  <i class="ti ti-eye"></i>
+                </button>
+                <button class="btn btn-sm btn-icon btn-warning" title="Edit">
+                  <i class="ti ti-edit"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="#" class="text-primary">256266516430</a>
+              </td>
+              <td>Siti Nurhaliza</td>
+              <td>
+                <span class="badge bg-label-success me-1">PRE</span>
+                PPPOE
+              </td>
+              <td>NET HOME 20Mbps</td>
+              <td><span class="badge bg-success">Aktif</span></td>
+              <td><span class="badge bg-success"><i class="ti ti-wifi me-1"></i>Online</span></td>
+              <td><span class="text-success fw-medium">-19.2 dBm</span></td>
+              <td><span class="text-success fw-medium">-22.1 dBm</span></td>
+              <td>2025-10-15</td>
+              <td><span class="badge bg-label-info">Port 2</span></td>
+              <td>
+                <button class="btn btn-sm btn-icon btn-primary me-1" title="Detail">
+                  <i class="ti ti-eye"></i>
+                </button>
+                <button class="btn btn-sm btn-icon btn-warning" title="Edit">
+                  <i class="ti ti-edit"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="#" class="text-primary">259197955731</a>
+              </td>
+              <td>Ahmad Rizki</td>
+              <td>
+                <span class="badge bg-label-success me-1">PRE</span>
+                PPPOE
+              </td>
+              <td>DW HOME 10Mbps</td>
+              <td><span class="badge bg-success">Aktif</span></td>
+              <td><span class="badge bg-danger"><i class="ti ti-wifi-off me-1"></i>Offline</span></td>
+              <td><span class="text-danger fw-medium">- dBm</span></td>
+              <td><span class="text-danger fw-medium">- dBm</span></td>
+              <td>2025-10-20</td>
+              <td><span class="badge bg-label-info">Port 3</span></td>
+              <td>
+                <button class="btn btn-sm btn-icon btn-primary me-1" title="Detail">
+                  <i class="ti ti-eye"></i>
+                </button>
+                <button class="btn btn-sm btn-icon btn-warning" title="Edit">
+                  <i class="ti ti-edit"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="#" class="text-primary">2312511234</a>
+              </td>
+              <td>Dewi Lestari</td>
+              <td>
+                <span class="badge bg-label-success me-1">PRE</span>
+                PPPOE
+              </td>
+              <td>NET HOME 50Mbps</td>
+              <td><span class="badge bg-warning">Isolir</span></td>
+              <td><span class="badge bg-secondary"><i class="ti ti-ban me-1"></i>Suspend</span></td>
+              <td><span class="text-muted fw-medium">-20.1 dBm</span></td>
+              <td><span class="text-muted fw-medium">-23.5 dBm</span></td>
+              <td>2025-09-30</td>
+              <td><span class="badge bg-label-info">Port 4</span></td>
+              <td>
+                <button class="btn btn-sm btn-icon btn-primary me-1" title="Detail">
+                  <i class="ti ti-eye"></i>
+                </button>
+                <button class="btn btn-sm btn-icon btn-warning" title="Edit">
+                  <i class="ti ti-edit"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="#" class="text-primary">259185274939</a>
+              </td>
+              <td>Andi Prasetyo</td>
+              <td>
+                <span class="badge bg-label-success me-1">PRE</span>
+                PPPOE
+              </td>
+              <td>DW HOME 20Mbps</td>
+              <td><span class="badge bg-success">Aktif</span></td>
+              <td><span class="badge bg-success"><i class="ti ti-wifi me-1"></i>Online</span></td>
+              <td><span class="text-warning fw-medium">-25.8 dBm</span></td>
+              <td><span class="text-warning fw-medium">-26.2 dBm</span></td>
+              <td>2025-11-10</td>
+              <td><span class="badge bg-label-info">Port 5</span></td>
+              <td>
+                <button class="btn btn-sm btn-icon btn-primary me-1" title="Detail">
+                  <i class="ti ti-eye"></i>
+                </button>
+                <button class="btn btn-sm btn-icon btn-warning" title="Edit">
+                  <i class="ti ti-edit"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="#" class="text-primary">252200578222</a>
+              </td>
+              <td>Rina Kusuma</td>
+              <td>
+                <span class="badge bg-label-success me-1">PRE</span>
+                PPPOE
+              </td>
+              <td>NET HOME 30Mbps</td>
+              <td><span class="badge bg-success">Aktif</span></td>
+              <td><span class="badge bg-success"><i class="ti ti-wifi me-1"></i>Online</span></td>
+              <td><span class="text-success fw-medium">-17.9 dBm</span></td>
+              <td><span class="text-success fw-medium">-20.8 dBm</span></td>
+              <td>2025-10-25</td>
+              <td><span class="badge bg-label-info">Port 6</span></td>
+              <td>
+                <button class="btn btn-sm btn-icon btn-primary me-1" title="Detail">
+                  <i class="ti ti-eye"></i>
+                </button>
+                <button class="btn btn-sm btn-icon btn-warning" title="Edit">
+                  <i class="ti ti-edit"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+            </div>
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl">
+                <div class="footer-container d-flex align-items-center justify-content-between py-2 flex-md-row flex-column">
+                  <div>
+                    © <script>document.write(new Date().getFullYear())</script>
+                    , made with ❤️ by <a href="https://pixinvent.com" target="_blank" class="footer-link text-primary fw-medium">Pixinvent</a>
+                  </div>
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+
+      <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+      <div class="drag-target"></div>
+    </div>
+    <!-- / Layout wrapper -->
+
+    <!-- Core JS -->
+    <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../../assets/vendor/js/bootstrap.js"></script>
+    <script src="../../assets/vendor/libs/node-waves/node-waves.js"></script>
+    <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../../assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="../../assets/vendor/libs/i18n/i18n.js"></script>
+    <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="../../assets/vendor/js/menu.js"></script>
+
+    <!-- Vendors JS -->
+    <script src="../../assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Main JS -->
+    <script src="../../assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script>
+      $(document).ready(function() {
+        // Initialize DataTable
+        $('#customersTable').DataTable({
+          responsive: true,
+          order: [[0, 'asc']],
+          pageLength: 10,
+          dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-md-end"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+          language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Search...",
+            lengthMenu: "Show _MENU_",
+            info: "Showing _START_ to _END_ of _TOTAL_ entries",
+            paginate: {
+              first: "First",
+              last: "Last",
+              next: "Next",
+              previous: "Previous"
+            }
+          }
+        });
+
+        // Initialize Map
+        var map = L.map('odpMap').setView([-6.9175, 107.6191], 15);
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors',
+          maxZoom: 19
+        }).addTo(map);
+
+        // Add ODP marker
+        var odpMarker = L.marker([-6.9175, 107.6191], {
+          icon: L.divIcon({
+            html: '<i class="ti ti-building-broadcast-tower" style="color: #696cff; font-size: 32px;"></i>',
+            className: 'odp-marker',
+            iconSize: [32, 32]
+          })
+        }).addTo(map);
+
+        odpMarker.bindPopup('<b>ODP Cikutra</b><br>Area: Cikutra, Bandung<br>Port: 28/32 terpakai').openPopup();
+      });
+    </script>
+  </body>
+</html>

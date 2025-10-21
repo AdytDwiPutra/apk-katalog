@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="light-style layout-navbar-fixed layout-menu-fixed layout-compact"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../../assets/"
+  data-template="vertical-menu-template">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>NOC - Eskalasi Tiket | ISP Ticketing System</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/tabler-icons.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/libs/node-waves/node-waves.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
+
+    <!-- Page CSS -->
+    <style>
+      .timeline {
+        position: relative;
+        padding-left: 30px;
+      }
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 8px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #d9dee3;
+      }
+      .timeline-item {
+        position: relative;
+        margin-bottom: 20px;
+      }
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -26px;
+        top: 5px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #696cff;
+        border: 2px solid #fff;
+        box-shadow: 0 0 0 3px #696cff;
+      }
+    </style>
+
+    <!-- Helpers -->
+    <script src="../../assets/vendor/js/helpers.js"></script>
+    <script src="../../assets/vendor/js/template-customizer.js"></script>
+    <script src="../../assets/js/config.js"></script>
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="index.html" class="app-brand-link">
+              <span class="app-brand-logo demo">
+                <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M0.00172773 0V6.85398C0.00172773 6.85398 -0.133178 9.01207 1.98092 10.8388L13.6912 21.9964L19.7809 21.9181L18.8042 9.88248L16.4951 7.17289L9.23799 0H0.00172773Z"
+                    fill="#7367F0" />
+                  <path
+                    opacity="0.06"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.69824 16.4364L12.5199 3.23696L16.5541 7.25596L7.69824 16.4364Z"
+                    fill="#161616" />
+                  <path
+                    opacity="0.06"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M8.07751 15.9175L13.9419 4.63989L16.5849 7.28475L8.07751 15.9175Z"
+                    fill="#161616" />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.77295 16.3566L23.6563 0H32V6.88383C32 6.88383 31.8262 9.17836 30.6591 10.4057L19.7824 22H13.6938L7.77295 16.3566Z"
+                    fill="#7367F0" />
+                </svg>
+              </span>
+              <span class="app-brand-text demo menu-text fw-bold">ISP System</span>
+            </a>
+
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+              <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
+              <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
+            </a>
+          </div>
+
+          <div class="menu-inner-shadow"></div>
+
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item">
+              <a href="index.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <div data-i18n="Dashboard">Dashboard</div>
+              </a>
+            </li>
+
+            <!-- Ticketing -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Ticketing System</span></li>
+            
+            <li class="menu-item">
+              <a href="tickets-list.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-ticket"></i>
+                <div data-i18n="All Tickets">All Tickets</div>
+              </a>
+            </li>
+
+            <li class="menu-item">
+              <a href="tickets-triage.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-filter"></i>
+                <div data-i18n="Triaging">Triaging</div>
+              </a>
+            </li>
+
+            <li class="menu-item active">
+              <a href="noc-escalation.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-arrow-up-circle"></i>
+                <div data-i18n="NOC Escalation">NOC Escalation</div>
+              </a>
+            </li>
+
+            <li class="menu-item">
+              <a href="field-technician.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-tools"></i>
+                <div data-i18n="Field Work">Field Work</div>
+              </a>
+            </li>
+
+            <!-- Customer Management -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Customer</span></li>
+            
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-users"></i>
+                <div data-i18n="Pelanggan">Pelanggan</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="pelanggan-list.html" class="menu-link">
+                    <div data-i18n="List Pelanggan">List Pelanggan</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pelanggan-map.html" class="menu-link">
+                    <div data-i18n="Peta Pelanggan">Peta Pelanggan</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Network -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Network</span></li>
+            
+            <li class="menu-item">
+              <a href="odp-list.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-network"></i>
+                <div data-i18n="ODP">ODP</div>
+              </a>
+            </li>
+
+            <li class="menu-item">
+              <a href="onu-register.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-device-desktop"></i>
+                <div data-i18n="ONU">ONU</div>
+              </a>
+            </li>
+          </ul>
+        </aside>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+          <nav
+            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar">
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="ti ti-menu-2 ti-sm"></i>
+              </a>
+            </div>
+
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <!-- Search -->
+              <div class="navbar-nav align-items-center">
+                <div class="nav-item navbar-search-wrapper mb-0">
+                  <a class="nav-item nav-link search-toggler d-flex align-items-center px-0" href="javascript:void(0);">
+                    <i class="ti ti-search ti-md me-2"></i>
+                    <span class="d-none d-md-inline-block text-muted">Search (Ctrl+/)</span>
+                  </a>
+                </div>
+              </div>
+              <!-- /Search -->
+
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- Notification -->
+                <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1">
+                  <a
+                    class="nav-link dropdown-toggle hide-arrow"
+                    href="javascript:void(0);"
+                    data-bs-toggle="dropdown"
+                    data-bs-auto-close="outside"
+                    aria-expanded="false">
+                    <i class="ti ti-bell ti-md"></i>
+                    <span class="badge bg-danger rounded-pill badge-notifications">5</span>
+                  </a>
+                </li>
+                <!--/ Notification -->
+
+                <!-- User -->
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="../../assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="pages-account-settings-account.html">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                              <img src="../../assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+                            </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <span class="fw-medium d-block">Admin NOC</span>
+                            <small class="text-muted">Network Operations</small>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <i class="ti ti-user-check me-2 ti-sm"></i>
+                        <span class="align-middle">My Profile</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <i class="ti ti-settings me-2 ti-sm"></i>
+                        <span class="align-middle">Settings</span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="auth-login-cover.html">
+                        <i class="ti ti-logout me-2 ti-sm"></i>
+                        <span class="align-middle">Log Out</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!--/ User -->
+              </ul>
+            </div>
+          </nav>
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="py-3 mb-4"><span class="text-muted fw-light">Ticketing /</span> NOC Escalation & Analysis</h4>
+
+              <!-- Statistics Cards -->
+              <div class="row mb-4">
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                        <div class="card-info">
+                          <p class="card-text">Tiket Urgent</p>
+                          <div class="d-flex align-items-end mb-2">
+                            <h4 class="card-title mb-0 me-2">8</h4>
+                            <small class="text-danger">Critical</small>
+                          </div>
+                        </div>
+                        <div class="card-icon">
+                          <span class="badge bg-label-danger rounded p-2">
+                            <i class="ti ti-alert-triangle ti-sm"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                        <div class="card-info">
+                          <p class="card-text">Menunggu Analisis</p>
+                          <div class="d-flex align-items-end mb-2">
+                            <h4 class="card-title mb-0 me-2">15</h4>
+                            <small class="text-warning">Pending</small>
+                          </div>
+                        </div>
+                        <div class="card-icon">
+                          <span class="badge bg-label-warning rounded p-2">
+                            <i class="ti ti-clock ti-sm"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                        <div class="card-info">
+                          <p class="card-text">Dalam Penanganan</p>
+                          <div class="d-flex align-items-end mb-2">
+                            <h4 class="card-title mb-0 me-2">23</h4>
+                            <small class="text-info">Active</small>
+                          </div>
+                        </div>
+                        <div class="card-icon">
+                          <span class="badge bg-label-info rounded p-2">
+                            <i class="ti ti-settings ti-sm"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                        <div class="card-info">
+                          <p class="card-text">Selesai Hari Ini</p>
+                          <div class="d-flex align-items-end mb-2">
+                            <h4 class="card-title mb-0 me-2">142</h4>
+                            <small class="text-success">Resolved</small>
+                          </div>
+                        </div>
+                        <div class="card-icon">
+                          <span class="badge bg-label-success rounded p-2">
+                            <i class="ti ti-check ti-sm"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Filter Card -->
+              <div class="card mb-4">
+                <div class="card-body">
+                  <div class="row g-3">
+                    <div class="col-md-3">
+                      <input type="text" class="form-control" placeholder="🔍 Cari Tiket ID, Pelanggan..." />
+                    </div>
+                    <div class="col-md-2">
+                      <select class="form-select">
+                        <option>Semua Prioritas</option>
+                        <option>Critical</option>
+                        <option>High</option>
+                        <option>Medium</option>
+                        <option>Low</option>
+                      </select>
+                    </div>
+                    <div class="col-md-2">
+                      <select class="form-select">
+                        <option>Semua Kategori</option>
+                        <option>Network Issue</option>
+                        <option>Hardware Problem</option>
+                        <option>Configuration</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3">
+                      <select class="form-select">
+                        <option>Status: Semua</option>
+                        <option>Waiting Analysis</option>
+                        <option>In Progress</option>
+                        <option>Need Field Visit</option>
+                      </select>
+                    </div>
+                    <div class="col-md-2">
+                      <button class="btn btn-primary w-100">
+                        <i class="ti ti-filter me-1"></i>Filter
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tickets List -->
+              <div class="card">
+                <h5 class="card-header">Tiket Eskalasi - Level 2/3</h5>
+                <div class="card-datatable table-responsive">
+                  <table class="datatables-tiket table border-top">
+                    <thead>
+                      <tr>
+                        <th>Tiket ID</th>
+                        <th>Prioritas</th>
+                        <th>Subject</th>
+                        <th>Pelanggan</th>
+                        <th>Kategori</th>
+                        <th>Status</th>
+                        <th>SLA</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span class="fw-medium">#TKT-2024-0847</span></td>
+                        <td><span class="badge bg-danger">CRITICAL</span></td>
+                        <td>
+                          <strong>Internet Down - Area Sudirman</strong><br>
+                          <small class="text-muted">12 Pelanggan Terdampak</small>
+                        </td>
+                        <td>
+                          PT. Maju Jaya<br>
+                          <small class="text-muted">Corporate</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-label-info">Network</span><br>
+                          <span class="badge bg-label-warning">OLT Down</span>
+                        </td>
+                        <td><span class="badge bg-label-warning">Waiting Analysis</span></td>
+                        <td><span class="text-danger"><small>45 min</small></span></td>
+                        <td>
+                          <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#analyzeModal">
+                            <i class="ti ti-search"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><span class="fw-medium">#TKT-2024-0845</span></td>
+                        <td><span class="badge bg-warning">HIGH</span></td>
+                        <td>
+                          <strong>Bandwidth Tidak Stabil</strong><br>
+                          <small class="text-muted">Packet Loss Tinggi</small>
+                        </td>
+                        <td>
+                          Bapak Rahmat<br>
+                          <small class="text-muted">Home 100Mbps</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-label-info">Performance</span>
+                        </td>
+                        <td><span class="badge bg-label-info">In Progress</span></td>
+                        <td><span class="text-muted"><small>2 hrs</small></span></td>
+                        <td>
+                          <button class="btn btn-sm btn-success">
+                            <i class="ti ti-truck"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><span class="fw-medium">#TKT-2024-0842</span></td>
+                        <td><span class="badge bg-secondary">MEDIUM</span></td>
+                        <td>
+                          <strong>ONT Loss of Signal</strong><br>
+                          <small class="text-muted">Pelanggan Tidak Bisa Online</small>
+                        </td>
+                        <td>
+                          Ibu Siti<br>
+                          <small class="text-muted">Home 50Mbps</small>
+                        </td>
+                        <td>
+                          <span class="badge bg-label-warning">Hardware</span>
+                        </td>
+                        <td><span class="badge bg-label-primary">Field Scheduled</span></td>
+                        <td><span class="text-muted"><small>14:00</small></span></td>
+                        <td>
+                          <button class="btn btn-sm btn-outline-primary">
+                            <i class="ti ti-eye"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl">
+                <div
+                  class="footer-container d-flex align-items-center justify-content-between py-2 flex-md-row flex-column">
+                  <div>
+                    © 2024 ISP Management System
+                  </div>
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+
+      <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+      <div class="drag-target"></div>
+    </div>
+    <!-- / Layout wrapper -->
+
+    <!-- Modal Analyze Ticket -->
+    <div class="modal fade" id="analyzeModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Analisis Tiket #TKT-2024-0847</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-danger">
+              <h6 class="alert-heading mb-1">CRITICAL - Area Down</h6>
+              <p class="mb-0">12 pelanggan corporate di area Sudirman terdampak</p>
+            </div>
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item">
+                <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-network" aria-controls="navs-network" aria-selected="true">
+                  Network Diagnostic
+                </button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-infra" aria-controls="navs-infra" aria-selected="false">
+                  Infrastruktur
+                </button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-history" aria-controls="navs-history" aria-selected="false">
+                  Riwayat
+                </button>
+              </li>
+            </ul>
+            
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="navs-network" role="tabpanel">
+                <div class="mt-3">
+                  <h6>Status OLT & Port</h6>
+                  <div class="table-responsive">
+                    <table class="table table-sm">
+                      <tbody>
+                        <tr>
+                          <td width="150"><strong>OLT</strong></td>
+                          <td>OLT-CENTRAL-01 (10.10.1.1)</td>
+                          <td width="100"><span class="badge bg-success">Online</span></td>
+                        </tr>
+                        <tr class="table-danger">
+                          <td><strong>PON Port</strong></td>
+                          <td>Port 1/1/4</td>
+                          <td><span class="badge bg-danger">Down</span></td>
+                        </tr>
+                        <tr>
+                          <td><strong>ONU Count</strong></td>
+                          <td>12 devices</td>
+                          <td><span class="badge bg-danger">All Offline</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h6 class="mt-3">Diagnostic Command Results</h6>
+                  <div class="bg-dark text-white p-3 rounded">
+                    <pre class="mb-0 text-white"><code>OLT# show pon onu-state gpon-olt_1/1/4
+Port        ONU  SN                 State
+----------------------------------------------
+gpon-olt_1/1/4  1   ZTEG12345678      LOS
+gpon-olt_1/1/4  2   ZTEG12345679      LOS  
+gpon-olt_1/1/4  3   ZTEG12345680      LOS
+... (9 more)
+
+OLT# show interface gpon-olt_1/1/4
+Port Status: Down
+RX Power: -40 dBm (No Signal)
+TX Power: Normal
+Alarm: LOS detected</code></pre>
+                  </div>
+
+                  <div class="alert alert-warning mt-3">
+                    <strong>Kesimpulan Awal:</strong> Port OLT 1/1/4 mengalami LOS (Loss of Signal). 
+                    Kemungkinan:
+                    <ul class="mb-0">
+                      <li>Fiber optic putus antara OLT-ODP</li>
+                      <li>Splitter rusak di ODP</li>
+                      <li>Connector ODF/ODP bermasalah</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="navs-infra" role="tabpanel">
+                <div class="mt-3">
+                  <h6>Topology & Coverage</h6>
+                  <div class="bg-lighter p-3 rounded">
+                    <p><strong>Core Router:</strong> ROUTER-CORE-01 (10.10.0.1) - Normal</p>
+                    <p><strong>OLT:</strong> OLT-CENTRAL-01 (10.10.1.1) - Normal</p>
+                    <p><strong>ODP:</strong> ODP-SUDIRMAN-05 - <span class="text-danger">Suspect</span></p>
+                    <p class="mb-0"><strong>Affected Customers:</strong> 12 Corporate accounts</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="navs-history" role="tabpanel">
+                <div class="mt-3">
+                  <h6>Riwayat Gangguan Area Ini</h6>
+                  <div class="timeline">
+                    <div class="timeline-item">
+                      <small class="text-muted">2 bulan lalu</small>
+                      <p class="mb-0">Port yang sama pernah down (fiber putus - galian jalan)</p>
+                    </div>
+                    <div class="timeline-item">
+                      <small class="text-muted">1 bulan lalu</small>
+                      <p class="mb-0">Maintenance ODP - pembersihan connector</p>
+                    </div>
+                    <div class="timeline-item">
+                      <small class="text-muted">Hari ini</small>
+                      <p class="mb-0">Port Down - sedang dianalisis</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr>
+
+            <h6>Keputusan Penanganan</h6>
+            <form>
+              <div class="mb-3">
+                <label class="form-label">Root Cause Analysis (RCA)</label>
+                <textarea class="form-control" rows="3">Berdasarkan diagnostic, port OLT 1/1/4 mengalami LOS total. Tidak ada sinyal RX dari sisi pelanggan. Kemungkinan besar fiber optic putus atau ada masalah di ODP-SUDIRMAN-05. Perlu kunjungan teknisi untuk pengecekan fisik.</textarea>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Tindakan Selanjutnya</label>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="action" id="action1" checked>
+                  <label class="form-check-label" for="action1">
+                    <strong>Assign ke Teknisi Lapangan</strong> - Perlu pengecekan fisik ODP/Fiber
+                  </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="action" id="action2">
+                  <label class="form-check-label" for="action2">
+                    <strong>Eskalasi ke Level 3</strong> - Perlu analisis lebih mendalam
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="action" id="action3">
+                  <label class="form-check-label" for="action3">
+                    <strong>Selesai (False Alarm)</strong> - Masalah terselesaikan
+                  </label>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Pilih Teknisi / Tim</label>
+                <select class="form-select">
+                  <option>Tim Teknisi Area Sudirman (3 orang tersedia)</option>
+                  <option>Rudi - Teknisi Senior (Lokasi terdekat)</option>
+                  <option>Ahmad - Teknisi Fiber Optic Specialist</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Jadwal Kunjungan</label>
+                <div class="row">
+                  <div class="col-md-6">
+                    <input type="date" class="form-control" value="2024-09-23">
+                  </div>
+                  <div class="col-md-6">
+                    <input type="time" class="form-control" value="13:00">
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Catatan untuk Teknisi</label>
+                <textarea class="form-control" rows="2">Urgent - 12 pelanggan corporate terdampak. Fokus pengecekan ODP-SUDIRMAN-05 dan fiber backbone. Bawa peralatan: OTDR, power meter, connector cleaning kit.</textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="button" class="btn btn-primary">
+              <i class="ti ti-send me-1"></i>Submit & Assign
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core JS -->
+    <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../../assets/vendor/js/bootstrap.js"></script>
+    <script src="../../assets/vendor/libs/node-waves/node-waves.js"></script>
+    <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../../assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="../../assets/vendor/libs/i18n/i18n.js"></script>
+    <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="../../assets/vendor/js/menu.js"></script>
+
+    <!-- Vendors JS -->
+    <script src="../../assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+
+    <!-- Main JS -->
+    <script src="../../assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script>
+      $(document).ready(function() {
+        $('.datatables-tiket').DataTable({
+          responsive: true,
+          order: [[0, 'desc']],
+          language: {
+            url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/id.json'
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="light-style layout-navbar-fixed layout-menu-fixed layout-compact"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../../assets/"
+  data-template="vertical-menu-template">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Customer Detail | ISP Management Dashboard</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/tabler-icons.css" />
+    <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../../assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../../assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/libs/node-waves/node-waves.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/sweetalert2/sweetalert2.css" />
+
+    <!-- Page CSS -->
+    <style>
+      #customer-map {
+        height: 400px;
+        border-radius: 0.375rem;
+      }
+      .status-card {
+        transition: transform 0.2s;
+      }
+      .status-card:hover {
+        transform: translateY(-5px);
+      }
+    </style>
+
+    <!-- Helpers -->
+    <script src="../../assets/vendor/js/helpers.js"></script>
+    <script src="../../assets/vendor/js/template-customizer.js"></script>
+    <script src="../../assets/js/config.js"></script>
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="index.html" class="app-brand-link">
+              <span class="app-brand-logo demo">
+                <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M0.00172773 0V6.85398C0.00172773 6.85398 -0.133178 9.01207 1.98092 10.8388L13.6912 21.9964L19.7809 21.9181L18.8042 9.88248L16.4951 7.17289L9.23799 0H0.00172773Z"
+                    fill="#7367F0" />
+                  <path
+                    opacity="0.06"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.69824 16.4364L12.5199 3.23696L16.5541 7.25596L7.69824 16.4364Z"
+                    fill="#161616" />
+                  <path
+                    opacity="0.06"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M8.07751 15.9175L13.9419 4.63989L16.5849 7.28475L8.07751 15.9175Z"
+                    fill="#161616" />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.77295 16.3566L23.6563 0H32V6.88383C32 6.88383 31.8262 9.17836 30.6591 10.4057L19.7824 22H13.6938L7.77295 16.3566Z"
+                    fill="#7367F0" />
+                </svg>
+              </span>
+              <span class="app-brand-text demo menu-text fw-bold">ISP Manager</span>
+            </a>
+
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+              <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
+              <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
+            </a>
+          </div>
+
+          <div class="menu-inner-shadow"></div>
+
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item">
+              <a href="index.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-smart-home"></i>
+                <div data-i18n="Dashboard">Dashboard</div>
+              </a>
+            </li>
+            
+            <!-- Session User -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-users"></i>
+                <div data-i18n="Session User">Session User</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="app-user-list.html" class="menu-link">
+                    <div data-i18n="List">List</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="app-user-add.html" class="menu-link">
+                    <div data-i18n="Tambah">Tambah</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            <!-- Router [NAS] -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-router"></i>
+                <div data-i18n="Router [NAS]">Router [NAS]</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="router-list.html" class="menu-link">
+                    <div data-i18n="List">List</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="router-add.html" class="menu-link">
+                    <div data-i18n="Tambah">Tambah</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            <!-- OLT Management -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-network"></i>
+                <div data-i18n="OLT">OLT</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="olt-list.html" class="menu-link">
+                    <div data-i18n="OLT">OLT</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="odf-list.html" class="menu-link">
+                    <div data-i18n="ODF">ODF</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="odc-list.html" class="menu-link">
+                    <div data-i18n="ODC">ODC</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="odp-list.html" class="menu-link">
+                    <div data-i18n="ODP">ODP</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            <!-- Profile Paket -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-package"></i>
+                <div data-i18n="Profile Paket">Profil Paket</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="group-profile-list.html" class="menu-link">
+                    <div data-i18n="Group Profile">Group Profile</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="group-profile-add.html" class="menu-link">
+                    <div data-i18n="Tambah Group">Tambah Group</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            <!-- Pelanggan -->
+            <li class="menu-item active open">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-users"></i>
+                <div data-i18n="Pelanggan">Pelanggan</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="pelanggan-list.html" class="menu-link">
+                    <div data-i18n="List Pelanggan">List Pelanggan</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pelanggan-add.html" class="menu-link">
+                    <div data-i18n="Tambah Pelanggan">Tambah Pelanggan</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pelanggan-maps.html" class="menu-link">
+                    <div data-i18n="Peta Pelanggan">Peta Pelanggan</div>
+                  </a>
+                </li>
+                <li class="menu-item active">
+                  <a href="pelanggan-detail.html" class="menu-link">
+                    <div data-i18n="Detail Pelanggan">Detail Pelanggan</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            <!-- Voucher -->
+            <li class="menu-item">
+              <a href="voucher.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-ticket"></i>
+                <div data-i18n="Voucher">Voucher</div>
+              </a>
+            </li>
+            
+            <!-- Leads & ONU -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-device-analytics"></i>
+                <div data-i18n="Leads & ONU">Leads & ONU</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="leads-map.html" class="menu-link">
+                    <div data-i18n="Peta Customer Leads">Peta Customer Leads</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="register-onu.html" class="menu-link">
+                    <div data-i18n="Register ONU">Register ONU</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            <!-- Data Tagihan -->
+            <li class="menu-item">
+              <a href="data-tagihan.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-report-money"></i>
+                <div data-i18n="Data Tagihan">Data Tagihan</div>
+              </a>
+            </li>
+            
+            <!-- Keuangan -->
+            <li class="menu-item">
+              <a href="keuangan.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-cash"></i>
+                <div data-i18n="Keuangan">Keuangan</div>
+              </a>
+            </li>
+            
+            <!-- Tiket -->
+            <li class="menu-item">
+              <a href="tiket.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-ticket"></i>
+                <div data-i18n="Tiket">Tiket</div>
+              </a>
+            </li>
+            
+            <!-- Tools -->
+            <li class="menu-item">
+              <a href="tools.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-tool"></i>
+                <div data-i18n="Tools">Tools</div>
+              </a>
+            </li>
+            
+            <!-- Logs -->
+            <li class="menu-item">
+              <a href="logs.html" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-file-description"></i>
+                <div data-i18n="Logs">Logs</div>
+              </a>
+            </li>
+          </ul>
+        </aside>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+          <nav
+            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar">
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="ti ti-menu-2 ti-sm"></i>
+              </a>
+            </div>
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <!-- Search -->
+              <div class="navbar-nav align-items-center">
+                <div class="nav-item navbar-search-wrapper mb-0">
+                  <a class="nav-item nav-link search-toggler d-flex align-items-center px-0" href="javascript:void(0);">
+                    <i class="ti ti-search ti-md me-2"></i>
+                    <span class="d-none d-md-inline-block text-muted">Search (Ctrl+/)</span>
+                  </a>
+                </div>
+              </div>
+              <!-- /Search -->
+
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- Language -->
+                <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <i class="ti ti-language rounded-circle ti-md"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="javascript:void(0);" data-language="en" data-text-direction="ltr">
+                        <span class="align-middle">English</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="javascript:void(0);" data-language="id" data-text-direction="ltr">
+                        <span class="align-middle">Indonesia</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!-- /Language -->
+
+                <!-- Style Switcher -->
+                <li class="nav-item dropdown-style-switcher dropdown me-2 me-xl-0">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <i class="ti ti-md"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-styles">
+                    <li>
+                      <a class="dropdown-item" href="javascript:void(0);" data-theme="light">
+                        <span class="align-middle"><i class="ti ti-sun me-2"></i>Light</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="javascript:void(0);" data-theme="dark">
+                        <span class="align-middle"><i class="ti ti-moon me-2"></i>Dark</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="javascript:void(0);" data-theme="system">
+                        <span class="align-middle"><i class="ti ti-device-desktop me-2"></i>System</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!-- / Style Switcher-->
+
+                <!-- Notification -->
+                <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1">
+                  <a
+                    class="nav-link dropdown-toggle hide-arrow"
+                    href="javascript:void(0);"
+                    data-bs-toggle="dropdown"
+                    data-bs-auto-close="outside"
+                    aria-expanded="false">
+                    <i class="ti ti-bell ti-md"></i>
+                    <span class="badge bg-danger rounded-pill badge-notifications">5</span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end py-0">
+                    <li class="dropdown-menu-header border-bottom">
+                      <div class="dropdown-header d-flex align-items-center py-3">
+                        <h5 class="text-body mb-0 me-auto">Notification</h5>
+                        <a
+                          href="javascript:void(0)"
+                          class="dropdown-notifications-all text-body"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="Mark all as read"
+                          ><i class="ti ti-mail-opened fs-4"></i
+                        ></a>
+                      </div>
+                    </li>
+                    <li class="dropdown-notifications-list scrollable-container">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                          <div class="d-flex">
+                            <div class="flex-shrink-0 me-3">
+                              <div class="avatar">
+                                <img src="../../assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+                              </div>
+                            </div>
+                            <div class="flex-grow-1">
+                              <h6 class="mb-1">Congratulation Lettie 🎉</h6>
+                              <p class="mb-0">Won the monthly best seller gold badge</p>
+                              <small class="text-muted">1h ago</small>
+                            </div>
+                            <div class="flex-shrink-0 dropdown-notifications-actions">
+                              <a href="javascript:void(0)" class="dropdown-notifications-read"
+                                ><span class="badge badge-dot"></span
+                              ></a>
+                              <a href="javascript:void(0)" class="dropdown-notifications-archive"
+                                ><span class="ti ti-x"></span
+                              ></a>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list-group-item list-group-item-action dropdown-notifications-item">
+                          <div class="d-flex">
+                            <div class="flex-shrink-0 me-3">
+                              <div class="avatar">
+                                <span class="avatar-initial rounded-circle bg-label-danger">CF</span>
+                              </div>
+                            </div>
+                            <div class="flex-grow-1">
+                              <h6 class="mb-1">Charles Franklin</h6>
+                              <p class="mb-0">Accepted your connection</p>
+                              <small class="text-muted">12hr ago</small>
+                            </div>
+                            <div class="flex-shrink-0 dropdown-notifications-actions">
+                              <a href="javascript:void(0)" class="dropdown-notifications-read"
+                                ><span class="badge badge-dot"></span
+                              ></a>
+                              <a href="javascript:void(0)" class="dropdown-notifications-archive"
+                                ><span class="ti ti-x"></span
+                              ></a>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="dropdown-menu-footer border-top">
+                      <a
+                        href="javascript:void(0);"
+                        class="dropdown-item d-flex justify-content-center text-primary p-2 h-px-40 mb-1 align-items-center">
+                        View all notifications
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!--/ Notification -->
+
+                <!-- User -->
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="../../assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="pages-account-settings-account.html">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                              <img src="../../assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+                            </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <span class="fw-medium d-block">John Doe</span>
+                            <small class="text-muted">Admin</small>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="pages-profile-user.html">
+                        <i class="ti ti-user-check me-2 ti-sm"></i>
+                        <span class="align-middle">My Profile</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="pages-account-settings-account.html">
+                        <i class="ti ti-settings me-2 ti-sm"></i>
+                        <span class="align-middle">Settings</span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="auth-login-cover.html" target="_blank">
+                        <i class="ti ti-logout me-2 ti-sm"></i>
+                        <span class="align-middle">Log Out</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!--/ User -->
+              </ul>
+            </div>
+
+            <!-- Search Small Screens -->
+            <div class="navbar-search-wrapper search-input-wrapper d-none">
+              <input
+                type="text"
+                class="form-control search-input container-xxl border-0"
+                placeholder="Search..."
+                aria-label="Search..." />
+              <i class="ti ti-x ti-sm search-toggler cursor-pointer"></i>
+            </div>
+          </nav>
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="fw-bold"><span class="text-muted fw-light">Pelanggan /</span> Detail Pelanggan</h4>
+                <div>
+                  <a href="pelanggan-edit.html" class="btn btn-primary me-2">
+                    <i class="ti ti-edit me-1"></i> Edit
+                  </a>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="ti ti-dots-vertical me-1"></i> Actions
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="javascript:void(0)"><i class="ti ti-printer me-1"></i> Print Invoice</a></li>
+                      <li><a class="dropdown-item" href="javascript:void(0)"><i class="ti ti-refresh me-1"></i> Renew Package</a></li>
+                      <li><a class="dropdown-item" href="javascript:void(0)"><i class="ti ti-ticket me-1"></i> Create Ticket</a></li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li><a class="dropdown-item text-danger" href="javascript:void(0)"><i class="ti ti-ban me-1"></i> Suspend</a></li>
+                      <li><a class="dropdown-item text-danger" href="javascript:void(0)"><i class="ti ti-trash me-1"></i> Delete</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Customer Status Cards -->
+              <div class="row g-4 mb-4">
+                <div class="col-sm-6 col-xl-4">
+                  <div class="card status-card">
+                    <div class="card-body">
+                      <div class="d-flex align-items-start justify-content-between">
+                        <div class="content-left">
+                          <span class="fw-medium d-block mb-1">Router ID</span>
+                          <div class="d-flex align-items-center">
+                            <h4 class="fs-3 fw-bold mb-0 me-2">10.160.2.54</h4>
+                            <span class="badge bg-label-primary">Online</span>
+                          </div>
+                          <small class="text-muted">Terkoneksi (online)</small>
+                        </div>
+                        <div class="avatar">
+                          <span class="avatar-initial rounded bg-label-primary">
+                            <i class="ti ti-router ti-md"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-xl-4">
+                  <div class="card status-card">
+                    <div class="card-body">
+                      <div class="d-flex align-items-start justify-content-between">
+                        <div class="content-left">
+                          <span class="fw-medium d-block mb-1">Waktu Online</span>
+                          <div class="d-flex align-items-center">
+                            <h4 class="fs-3 fw-bold mb-0 me-2">10d 14h 32m 33s</h4>
+                          </div>
+                          <small class="text-muted">Uptime connection</small>
+                        </div>
+                        <div class="avatar">
+                          <span class="avatar-initial rounded bg-label-danger">
+                            <i class="ti ti-clock ti-md"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-xl-4">
+                  <div class="card status-card">
+                    <div class="card-body">
+                      <div class="d-flex align-items-start justify-content-between">
+                        <div class="content-left">
+                          <span class="fw-medium d-block mb-1">Quota Terpakai</span>
+                          <div class="d-flex align-items-center">
+                            <h4 class="fs-3 fw-bold mb-0 me-2">245.88 GB</h4>
+                          </div>
+                          <small class="text-muted">Monthly usage</small>
+                        </div>
+                        <div class="avatar">
+                          <span class="avatar-initial rounded bg-label-success">
+                            <i class="ti ti-chart-bar ti-md"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--/ Customer Status Cards -->
+
+              <div class="row">
+                <!-- Customer Info Section -->
+                <div class="col-xl-8 col-lg-7">
+                  <!-- Customer Details Card -->
+                  <div class="card mb-4">
+                    <div class="card-header">
+                      <h5 class="card-title mb-0">Info Pelanggan</h5>
+                    </div>
+                    <div class="card-body">
+                      <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                          <button
+                            type="button"
+                            class="nav-link active"
+                            role="tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#info-pelanggan"
+                            aria-controls="info-pelanggan"
+                            aria-selected="true">
+                            <i class="ti ti-user me-2"></i> Info Pelanggan
+                          </button>
+                        </li>
+                        <li class="nav-item">
+                          <button
+                            type="button"
+                            class="nav-link"
+                            role="tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#paket-langganan"
+                            aria-controls="paket-langganan"
+                            aria-selected="false">
+                            <i class="ti ti-package me-2"></i> Paket Langganan
+                          </button>
+                        </li>
+                      </ul>
+                      <div class="tab-content pt-4">
+                        <div class="tab-pane fade show active" id="info-pelanggan" role="tabpanel">
+                          <div class="row">
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">ID Pelanggan</label>
+                              <p class="form-control-static">242382545</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Nama</label>
+                              <p class="form-control-static">RIKI SOPIAN</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Nama Kontak/Alias</label>
+                              <p class="form-control-static">NANA HUSUP DARANISA</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">No. KTP</label>
+                              <p class="form-control-static">3204248051990002</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">No. HP</label>
+                              <p class="form-control-static">08537231619</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Email</label>
+                              <p class="form-control-static">panitiapanitia@gmail.com</p>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                              <label class="form-label fw-medium text-muted">Alamat</label>
+                              <p class="form-control-static">RT 002 RW 003 DESA CICALENGKA WETAN KECAMATAN CICALENGKA</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Latitude</label>
+                              <p class="form-control-static">-6.900657</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Longitude</label>
+                              <p class="form-control-static">107.846051</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">ODP / POP</label>
+                              <p class="form-control-static">ODP23 - JALINAN</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tab-pane fade" id="paket-langganan" role="tabpanel">
+                          <div class="row">
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Tipe Pelanggan</label>
+                              <p class="form-control-static">
+                                <span class="badge bg-label-primary">Regular</span>
+                              </p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Tipe Pembayaran</label>
+                              <p class="form-control-static">PREPAID</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Status Bayar</label>
+                              <p class="form-control-static">SUDAH BAYAR</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Status Akun</label>
+                              <p class="form-control-static">ENABLED</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Owner Data</label>
+                              <p class="form-control-static">Staff ISP - minoradius (Administrator)</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Server / Service</label>
+                              <p class="form-control-static">Semua Server & NAS</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Bind On Login</label>
+                              <p class="form-control-static">TIDAK</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Caller-ID</label>
+                              <p class="form-control-static">-</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Tipe Service</label>
+                              <p class="form-control-static">PPPOE</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Paket Langganan</label>
+                              <p class="form-control-static">DW HOME 10Mbps - Rp. 150.000,00 | 1 Bulan</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Tagihan Dasar</label>
+                              <p class="form-control-static">150000</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Tagihan PPN</label>
+                              <p class="form-control-static">Ya (PPN Langanan - 11%)</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Diperbaharui</label>
+                              <p class="form-control-static">12/09/2025</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Jatuh Tempo</label>
+                              <p class="form-control-static">05/10/2025</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Aksi Jatuh Tempo</label>
+                              <p class="form-control-static">ISOLIR INTERNET (Suspend)</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label class="form-label fw-medium text-muted">Tipe IP Address</label>
+                              <p class="form-control-static">IP DINAMIS</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--/ Customer Details Card -->
+
+                  <!-- Login Details Card -->
+                  <div class="card mb-4">
+                    <div class="card-header">
+                      <h5 class="card-title mb-0">Login Info</h5>
+                    </div>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label fw-medium text-muted">Username</label>
+                          <p class="form-control-static">dw0482@daret.id</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label fw-medium text-muted">Password</label>
+                          <div class="input-group">
+                            <input type="password" class="form-control" id="password" value="dw0482" readonly />
+                            <button class="btn btn-outline-primary" type="button" id="togglePassword">
+                              <i class="ti ti-eye-off"></i>
+                            </button>
+                          </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                          <label class="form-label fw-medium text-muted">Password Clientarea</label>
+                          <p class="form-control-static">08537231619</p>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                          <label class="form-label fw-medium text-muted">Catatan</label>
+                          <p class="form-control-static">BUKAAN HEBOUNG KARE UNTUK MENGHAFAPO KEPAD LEBULANUT</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--/ Login Details Card -->
+
+                  <!-- Customer Invoice Table -->
+                  <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                      <h5 class="card-title mb-0">Laporan Pelanggan</h5>
+                      <button class="btn btn-primary btn-sm">
+                        <i class="ti ti-plus me-1"></i> New Invoice
+                      </button>
+                    </div>
+                    
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                      <li class="nav-item">
+                        <button
+                          type="button"
+                          class="nav-link active"
+                          role="tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#invoice-session"
+                          aria-controls="invoice-session"
+                          aria-selected="true">
+                          Invoice & Session
+                        </button>
+                      </li>
+                      <li class="nav-item">
+                        <button
+                          type="button"
+                          class="nav-link"
+                          role="tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#riwayat-dialup"
+                          aria-controls="riwayat-dialup"
+                          aria-selected="false">
+                          Riwayat Dialup
+                        </button>
+                      </li>
+                    </ul>
+
+                    <div class="tab-content">
+                      <!-- Invoice & Session Tab -->
+                      <div class="tab-pane fade show active" id="invoice-session" role="tabpanel">
+                        <div class="table-responsive text-nowrap">
+                          <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <th>Invoice</th>
+                                <th>Paket Langganan</th>
+                                <th>Jumlah</th>
+                                <th>Aktivasi</th>
+                                <th>Deadline</th>
+                                <th>Owner Data</th>
+                                <th>Aksi</th>
+                              </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                              <tr>
+                                <td>14688</td>
+                                <td>INV-97253987125D</td>
+                                <td>DW HOME 10Mbps</td>
+                                <td>Rp. 166.500,00</td>
+                                <td>September 12, 2025</td>
+                                <td>October 05, 2025</td>
+                                <td>suspend</td>
+                                <td>
+                                  <div class="d-inline-block">
+                                    <button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                      <i class="ti ti-dots-vertical"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                      <a href="javascript:;" class="dropdown-item">View</a>
+                                      <a href="javascript:;" class="dropdown-item">Print</a>
+                                      <a href="javascript:;" class="dropdown-item">Edit</a>
+                                      <a href="javascript:;" class="dropdown-item text-danger">Delete</a>
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>12800</td>
+                                <td>INV-86257258820D</td>
+                                <td>DW HOME 10Mbps</td>
+                                <td>Rp. 166.500,00</td>
+                                <td>July 06, 2025</td>
+                                <td>August 05, 2025</td>
+                                <td>minoradius</td>
+                                <td>
+                                  <div class="d-inline-block">
+                                    <button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                      <i class="ti ti-dots-vertical"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                      <a href="javascript:;" class="dropdown-item">View</a>
+                                      <a href="javascript:;" class="dropdown-item">Print</a>
+                                      <a href="javascript:;" class="dropdown-item">Edit</a>
+                                      <a href="javascript:;" class="dropdown-item text-danger">Delete</a>
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      
+                      <!-- Riwayat Dialup Tab -->
+                      <div class="tab-pane fade" id="riwayat-dialup" role="tabpanel">
+                        <div class="card-body">
+                          <p class="text-muted fst-italic mb-3">*** only display last 100 record</p>
+                          
+                          <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex align-items-center">
+                              <label for="dialup-entries" class="me-2">Show</label>
+                              <select id="dialup-entries" class="form-select form-select-sm" style="width: 70px;">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                              </select>
+                              <span class="ms-2">entries</span>
+                            </div>
+                            <div>
+                              <div class="input-group input-group-sm">
+                                <span class="input-group-text">Search:</span>
+                                <input type="text" class="form-control" aria-label="Search dialup records">
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div class="table-responsive">
+                            <table class="table table-sm table-bordered table-hover">
+                              <thead>
+                                <tr>
+                                  <th class="text-center">Acct ID <i class="ti ti-chevron-down ms-1"></i></th>
+                                  <th class="text-center">Uptime <i class="ti ti-chevron-down ms-1"></i></th>
+                                  <th class="text-center">Waktu Mulai <i class="ti ti-chevron-down ms-1"></i></th>
+                                  <th class="text-center">Waktu Berakhir <i class="ti ti-chevron-down ms-1"></i></th>
+                                  <th class="text-center">NAS <i class="ti ti-chevron-down ms-1"></i></th>
+                                  <th class="text-center">Upload <i class="ti ti-chevron-down ms-1"></i></th>
+                                  <th class="text-center">Download <i class="ti ti-chevron-down ms-1"></i></th>
+                                  <th class="text-center">Terminate By <i class="ti ti-chevron-down ms-1"></i></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>1124462</td>
+                                  <td>6h 10m 0s</td>
+                                  <td>Sep/22/2025 22:17</td>
+                                  <td>-</td>
+                                  <td>NAS POP-Bnvs</td>
+                                  <td><i class="ti ti-arrow-up text-success me-1"></i>331.77 MB</td>
+                                  <td><i class="ti ti-arrow-down text-primary me-1"></i>6.75 GB</td>
+                                  <td>-</td>
+                                </tr>
+                                <tr>
+                                  <td>1124150</td>
+                                  <td>15h 5m 23s</td>
+                                  <td>Sep/22/2025 07:08</td>
+                                  <td>Sep/22/2025 22:16</td>
+                                  <td>NAS POP-Bnvs</td>
+                                  <td><i class="ti ti-arrow-up text-success me-1"></i>829.57 MB</td>
+                                  <td><i class="ti ti-arrow-down text-primary me-1"></i>16.04 GB</td>
+                                  <td>Lost-Carrier</td>
+                                </tr>
+                                <tr>
+                                  <td>1124024</td>
+                                  <td>8h 31m 58s</td>
+                                  <td>Sep/21/2025 22:35</td>
+                                  <td>Sep/22/2025 07:07</td>
+                                  <td>NAS POP-Bnvs</td>
+                                  <td><i class="ti ti-arrow-up text-success me-1"></i>315.4 MB</td>
+                                  <td><i class="ti ti-arrow-down text-primary me-1"></i>3.22 GB</td>
+                                  <td>Lost-Carrier</td>
+                                </tr>
+                                <tr>
+                                  <td>1123906</td>
+                                  <td>4h 21m 36s</td>
+                                  <td>Sep/21/2025 18:13</td>
+                                  <td>Sep/21/2025 22:35</td>
+                                  <td>NAS POP-Bnvs</td>
+                                  <td><i class="ti ti-arrow-up text-success me-1"></i>485.83 MB</td>
+                                  <td><i class="ti ti-arrow-down text-primary me-1"></i>5.32 GB</td>
+                                  <td>Lost-Carrier</td>
+                                </tr>
+                                <tr>
+                                  <td>1123616</td>
+                                  <td>14h 53m 50s</td>
+                                  <td>Sep/21/2025 03:18</td>
+                                  <td>Sep/21/2025 18:12</td>
+                                  <td>NAS POP-Bnvs</td>
+                                  <td><i class="ti ti-arrow-up text-success me-1"></i>1.07 GB</td>
+                                  <td><i class="ti ti-arrow-down text-primary me-1"></i>15.01 GB</td>
+                                  <td>Lost-Carrier</td>
+                                </tr>
+                                <tr>
+                                  <td>1123390</td>
+                                  <td>11h 8m 58s</td>
+                                  <td>Sep/20/2025 16:08</td>
+                                  <td>Sep/21/2025 03:17</td>
+                                  <td>NAS POP-Bnvs</td>
+                                  <td><i class="ti ti-arrow-up text-success me-1"></i>876.89 MB</td>
+                                  <td><i class="ti ti-arrow-down text-primary me-1"></i>10.77 GB</td>
+                                  <td>Lost-Carrier</td>
+                                </tr>
+                                <tr>
+                                  <td>1122856</td>
+                                  <td>1d 1h 38m 58s</td>
+                                  <td>Sep/19/2025 11:51</td>
+                                  <td>Sep/20/2025 13:29</td>
+                                  <td>NAS POP-Bnvs</td>
+                                  <td><i class="ti ti-arrow-up text-success me-1"></i>1.91 GB</td>
+                                  <td><i class="ti ti-arrow-down text-primary me-1"></i>23.87 GB</td>
+                                  <td>Lost-Carrier</td>
+                                </tr>
+                                <tr>
+                                  <td>1122465</td>
+                                  <td>1d 4h 10m 39s</td>
+                                  <td>Sep/18/2025 07:39</td>
+                                  <td>Sep/19/2025 11:50</td>
+                                  <td>NAS POP-Bnvs</td>
+                                  <td><i class="ti ti-arrow-up text-success me-1"></i>1.36 GB</td>
+                                  <td><i class="ti ti-arrow-down text-primary me-1"></i>23.53 GB</td>
+                                  <td>Lost-Carrier</td>
+                                </tr>
+                                <tr>
+                                  <td>1120957</td>
+                                  <td>4d 18h 16m 15s</td>
+                                  <td>Sep/13/2025 13:21</td>
+                                  <td>Sep/18/2025 07:38</td>
+                                  <td>NAS POP-Bnvs</td>
+                                  <td><i class="ti ti-arrow-up text-success me-1"></i>7.57 GB</td>
+                                  <td><i class="ti ti-arrow-down text-primary me-1"></i>100.34 GB</td>
+                                  <td>Lost-Carrier</td>
+                                </tr>
+                                <tr>
+                                  <td>1120705</td>
+                                  <td>18h 57m 58s</td>
+                                  <td>Sep/12/2025 18:23</td>
+                                  <td>Sep/13/2025 13:21</td>
+                                  <td>NAS POP-Bnvs</td>
+                                  <td><i class="ti ti-arrow-up text-success me-1"></i>2.94 GB</td>
+                                  <td><i class="ti ti-arrow-down text-primary me-1"></i>18.72 GB</td>
+                                  <td>Lost-Carrier</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          
+                          <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div>
+                              <span>Showing 1 to 10 of 11 entries</span>
+                            </div>
+                            <div>
+                              <nav aria-label="Page navigation">
+                                <ul class="pagination pagination-sm">
+                                  <li class="page-item">
+                                    <a class="page-link" href="javascript:void(0);" aria-label="Previous">
+                                      <span aria-hidden="true">Previous</span>
+                                    </a>
+                                  </li>
+                                  <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
+                                  <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                                  <li class="page-item">
+                                    <a class="page-link" href="javascript:void(0);" aria-label="Next">
+                                      <span aria-hidden="true">Next</span>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </nav>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--/ Customer Invoice Table -->
+                </div>
+                <!--/ Customer Info Section -->
+
+                <!-- Right Sidebar Section -->
+                <div class="col-xl-4 col-lg-5">
+                  <!-- Customer Location Card -->
+                  <div class="card mb-4">
+                    <div class="card-header">
+                      <h5 class="card-title mb-0">Lokasi Pelanggan</h5>
+                    </div>
+                    <div class="card-body">
+                      <div id="customer-map"></div>
+                      <div class="mt-3">
+                        <p class="mb-1"><i class="ti ti-map-pin me-1"></i> <strong>Alamat:</strong> RT 002 RW 003 DESA CICALENGKA WETAN KECAMATAN CICALENGKA</p>
+                        <p class="mb-1"><i class="ti ti-navigation me-1"></i> <strong>Koordinat:</strong> -6.900657, 107.846051</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!--/ Customer Location Card -->
+
+                  <!-- Connection Summary -->
+                  <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between">
+                      <div class="card-title mb-0">Traffic Usage</div>
+                      <div class="dropdown">
+                        <button
+                          type="button"
+                          class="btn p-0"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false">
+                          <i class="ti ti-dots-vertical"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                          <a href="javascript:void(0);" class="dropdown-item">View More</a>
+                          <a href="javascript:void(0);" class="dropdown-item">Refresh</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="row mb-3">
+                        <div class="col-6">
+                          <div class="d-flex align-items-center">
+                            <div class="avatar">
+                              <div class="avatar-initial bg-label-primary rounded">
+                                <i class="ti ti-arrow-down ti-md"></i>
+                              </div>
+                            </div>
+                            <div class="ms-3">
+                              <h6 class="mb-0">Download</h6>
+                              <small>182.65 GB</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="d-flex align-items-center">
+                            <div class="avatar">
+                              <div class="avatar-initial bg-label-success rounded">
+                                <i class="ti ti-arrow-up ti-md"></i>
+                              </div>
+                            </div>
+                            <div class="ms-3">
+                              <h6 class="mb-0">Upload</h6>
+                              <small>63.23 GB</small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <h6 class="text-center mb-4">Total: 245.88 GB</h6>
+                      <div class="progress mb-2 rounded-pill" style="height: 15px;">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 74.3%" aria-valuenow="74.3" aria-valuemin="0" aria-valuemax="100">74.3%</div>
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 25.7%" aria-valuenow="25.7" aria-valuemin="0" aria-valuemax="100">25.7%</div>
+                      </div>
+                      <div class="text-center">
+                        <small>Terakhir update: 23 Sep 2025, 16:45</small>
+                      </div>
+                    </div>
+                  </div>
+                  <!--/ Connection Summary -->
+
+                  <!-- History Tiket Gangguan -->
+                  <div class="card mb-4">
+                    <div class="card-header">
+                      <h5 class="card-title mb-0">History Tiket Gangguan</h5>
+                    </div>
+                    <div class="card-body pb-0">
+                      <ul class="timeline mb-0">
+                        <li class="timeline-item timeline-item-transparent">
+                          <span class="timeline-point timeline-point-success"></span>
+                          <div class="timeline-event">
+                            <div class="timeline-header mb-1">
+                              <h6 class="mb-0">TKT-240915-1082 - Closed</h6>
+                              <small class="text-muted">15 Sep 2025, 16:32:15</small>
+                            </div>
+                            <p class="mb-2">Internet tidak bisa streaming video, buffering terus</p>
+                            <div class="d-flex gap-2">
+                              <span class="badge bg-label-success">Resolved</span>
+                              <small>Dibuat oleh: <span class="fw-semibold">Customer</span></small>
+                              <small>Ditutup oleh: <span class="fw-semibold">Ahmad Teknisi</span></small>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="timeline-item timeline-item-transparent">
+                          <span class="timeline-point timeline-point-warning"></span>
+                          <div class="timeline-event">
+                            <div class="timeline-header mb-1">
+                              <h6 class="mb-0">TKT-240825-0872 - Closed</h6>
+                              <small class="text-muted">25 Aug 2025, 10:22:36</small>
+                            </div>
+                            <p class="mb-2">Router reboot sendiri berkali-kali dalam sehari</p>
+                            <div class="d-flex gap-2">
+                              <span class="badge bg-label-success">Resolved</span>
+                              <small>Dibuat oleh: <span class="fw-semibold">Budi CS</span></small>
+                              <small>Ditutup oleh: <span class="fw-semibold">Rudi Teknisi</span></small>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="timeline-item timeline-item-transparent">
+                          <span class="timeline-point timeline-point-danger"></span>
+                          <div class="timeline-event">
+                            <div class="timeline-header mb-1">
+                              <h6 class="mb-0">TKT-240712-0654 - Closed</h6>
+                              <small class="text-muted">12 Jul 2025, 08:45:50</small>
+                            </div>
+                            <p class="mb-2">Kabel fiber putus tertimpa pohon tumbang</p>
+                            <div class="d-flex gap-2">
+                              <span class="badge bg-label-success">Resolved</span>
+                              <small>Dibuat oleh: <span class="fw-semibold">Customer</span></small>
+                              <small>Ditutup oleh: <span class="fw-semibold">Tim Lapangan</span></small>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="timeline-item timeline-item-transparent">
+                          <span class="timeline-point timeline-point-info"></span>
+                          <div class="timeline-event">
+                            <div class="timeline-header mb-1">
+                              <h6 class="mb-0">TKT-240530-0426 - Closed</h6>
+                              <small class="text-muted">30 May 2025, 14:17:32</small>
+                            </div>
+                            <p class="mb-0">Minta ganti password WiFi router</p>
+                            <div class="d-flex gap-2">
+                              <span class="badge bg-label-success">Resolved</span>
+                              <small>Dibuat oleh: <span class="fw-semibold">Customer</span></small>
+                              <small>Ditutup oleh: <span class="fw-semibold">Deni CS</span></small>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="timeline-end-indicator">
+                          <i class="ti ti-chevrons-down"></i>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!--/ History Tiket Gangguan -->
+                </div>
+                <!--/ Right Sidebar Section -->
+              </div>
+            </div>
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl">
+                <div
+                  class="footer-container d-flex align-items-center justify-content-between py-2 flex-md-row flex-column">
+                  <div>
+                    ©
+                    <script>
+                      document.write(new Date().getFullYear());
+                    </script>
+                    , made with ❤️ by <a href="#" target="_blank" class="fw-medium">ISP Manager</a>
+                  </div>
+                  <div class="d-none d-lg-inline-block">
+                    <a href="#" class="footer-link me-4">License</a>
+                    <a href="#" target="_blank" class="footer-link me-4">Documentation</a>
+                    <a href="#" target="_blank" class="footer-link me-4">Support</a>
+                  </div>
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+
+      <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+      <div class="drag-target"></div>
+    </div>
+    <!-- / Layout wrapper -->
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../../assets/vendor/js/bootstrap.js"></script>
+    <script src="../../assets/vendor/libs/node-waves/node-waves.js"></script>
+    <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../../assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="../../assets/vendor/libs/i18n/i18n.js"></script>
+    <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="../../assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+    <script src="../../assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+    <script src="../../assets/vendor/libs/leaflet/leaflet.js"></script>
+    <script src="../../assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+
+    <!-- Main JS -->
+    <script src="../../assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script>
+    $(function() {
+      // Toggle password visibility
+      $('#togglePassword').on('click', function() {
+        const passwordField = $('#password');
+        const passwordFieldType = passwordField.attr('type');
+        const toggleIcon = $(this).find('i');
+
+        if (passwordFieldType === 'password') {
+          passwordField.attr('type', 'text');
+          toggleIcon.removeClass('ti-eye-off').addClass('ti-eye');
+        } else {
+          passwordField.attr('type', 'password');
+          toggleIcon.removeClass('ti-eye').addClass('ti-eye-off');
+        }
+      });
+      
+      // Initialize map
+      const map = L.map('customer-map').setView([-6.900657, 107.846051], 14);
+
+      // Add OpenStreetMap tile layer
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      // Add customer location marker
+      const marker = L.marker([-6.900657, 107.846051]).addTo(map);
+      marker.bindPopup("<strong>RIKI SOPIAN</strong><br>DW HOME 10Mbps<br>Status: <span class='text-success'>Online</span>").openPopup();
+
+      // Add ODP marker
+      const odpMarker = L.marker([-6.900257, 107.844051], {
+        icon: L.divIcon({
+          html: '<i class="ti ti-box text-primary" style="font-size: 24px;"></i>',
+          className: 'custom-div-icon',
+          iconSize: [30, 30],
+          iconAnchor: [15, 15]
+        })
+      }).addTo(map);
+      odpMarker.bindPopup("<strong>ODP23 - JALINAN</strong><br>Status: <span class='text-success'>Active</span><br>Pelanggan: 8/16");
+
+      // Draw line connecting customer to ODP
+      const polyline = L.polyline([
+        [-6.900657, 107.846051],
+        [-6.900257, 107.844051]
+      ], {color: '#7367f0', weight: 3, opacity: 0.7, dashArray: '10, 10'}).addTo(map);
+    });
+    </script>
+  </body>
+</html>
