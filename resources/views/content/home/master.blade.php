@@ -52,200 +52,105 @@
     <!-- Page CSS (Optional) -->
     @stack('styles')
   </head>
-<style>
-    #template-customizer{
-        display:none !important;
-    }
-    /* --- Base style --- */
-/* 🔍 Styling utama search bar */
-/* =========================
-   🔍 Search Box Style Umum
-   ========================= */
-.search-wrapper {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.search-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  gap: 0.5rem;
-  width: 100%;
-  max-width: 100px;
-}
-
-.category-dropdown .btn {
-  height: 42px;
-  border-radius: 6px;
-  white-space: nowrap;
-}
-
-.search-box .form-control {
-  border-radius: 6px;
-}
-
-.search-box .input-group {
-  flex-grow: 1;
-}
-
-#searchResults .list-group-item:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-}
-
-/* =========================
-   💻 Desktop (>=1200px)
-   ========================= */
-@media (min-width: 1200px) {
-  .search-wrapper {
-    justify-content: center;
-  }
-}
-
-/* =========================
-   📱 Tablet (<=992px)
-   ========================= */
-@media (max-width: 992px) {
-  .navbar-nav-right {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .search-wrapper {
-    width: 100%;
-    padding: 0 1rem;
-  }
-
-  .search-box {
-    flex-direction: column;
-    align-items: stretch;
-    max-width: 100%;
-  }
-
-  .category-dropdown {
-    width: 100%;
-  }
-}
-
-/* =========================
-   📱 Mobile (<=576px)
-   ========================= */
-@media (max-width: 576px) {
-  .layout-navbar {
-    flex-wrap: wrap;
-    padding: 0.5rem 0.75rem;
-  }
-
-  .search-wrapper {
-    order: 3; /* pindah ke bawah toggle menu & mode gelap */
-    width: 100%;
-    /* margin-top: 0.5rem; */
-    padding: 0;
-  }
-
-  .search-box {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    gap: 0.4rem;
-  }
-
-  .category-dropdown,
-  .search-box .input-group {
-    width: 100%;
-  }
-
-  .input-group-text {
-    display: none;
-  }
-
-  #searchResults {
-    width: 100%;
-  }
-}
-
-
-</style>
+    @include('layouts.style')
   <body>
-    <!-- Layout wrapper -->
-        <!-- Navbar -->
-        <nav
-        class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-        id="layout-navbar">
-
-        <!-- Tombol menu kiri (mobile) -->
-        <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-            <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-            <i class="ti ti-menu-2 ti-sm"></i>
-            </a>
+    <div id="loading-overlay">
+      <div class="loading-center">
+        <img src="{{ asset('assets/images/logo2.png') }}" alt="Elang Omega Logo" class="logo">
+        <div class="brand">
+          <h1 class="brand-title">
+            <span>E</span><span>L</span><span>A</span><span>N</span><span>G</span>
+            <span style="margin:0rem;"></span>
+            <span>O</span><span>M</span><span>E</span><span>G</span><span>A</span>
+          </h1>
+          <p class="subtitle">AMENITIES HOTEL SUPPLIER</p>
         </div>
+        <div class="loading-text"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> &nbsp; Loading…</div>
+      </div>
+    </div>
 
-        <!-- Konten utama navbar -->
-        <div class="navbar-nav-right d-flex align-items-center w-100" id="navbar-collapse">
 
-            <!-- 🔍 Search & Category -->
-            <div class="search-wrapper flex-grow-1 d-flex align-items-center justify-content-center">
-            <div class="search-box d-flex flex-wrap align-items-center w-100">
+    <!-- Layout wrapper -->
+      <!-- Navbar -->
+      <header class="app-header shadow-sm">
+        <nav class="navbar navbar-expand-lg bg-white px-3 py-2">
+          <div class="container-fluid align-items-center justify-content-between">
+            
+            <!-- 🔹 Logo kiri -->
+            <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+              <img src="{{ asset('assets/images/logo2.png') }}" alt="Elang Omega" height="42" class="me-2">
+              <span class="fw-bold text-danger">Elang Omega</span>
+            </a>
 
-                <!-- Dropdown kategori -->
-                <div class="dropdown me-2 category-dropdown">
-                <button
+            <!-- 🔹 Search tengah -->
+            <div class="search-wrapper flex-grow-1 mx-3 d-flex align-items-center justify-content-center">
+              <div class="search-box d-flex flex-wrap align-items-center w-100" style="max-width: 900px;">
+                <div class="dropdown me-2 category-dropdown d-none d-md-block">
+                  <button
                     class="btn btn-outline-secondary dropdown-toggle"
                     type="button"
                     id="categoryDropdown"
                     data-bs-toggle="dropdown"
                     aria-expanded="false">
                     All Kategori
-                </button>
-                <ul class="dropdown-menu" id="categoryList" aria-labelledby="categoryDropdown">
-                </ul>
+                  </button>
+                  <ul class="dropdown-menu" id="categoryList" aria-labelledby="categoryDropdown">
+                    <li><a class="dropdown-item" href="#" data-id="">All Kategori</a></li>
+                  </ul>
                 </div>
 
-                <!-- Input search -->
                 <div class="flex-grow-1 position-relative">
-                <div class="input-group">
+                  <div class="input-group">
                     <span class="input-group-text"><i class="ti ti-search"></i></span>
                     <input
-                    type="text"
-                    id="productSearch"
-                    class="form-control"
-                    placeholder="Cari produk..."
-                    autocomplete="off" />
+                      type="text"
+                      id="productSearch"
+                      class="form-control"
+                      placeholder="Cari produk..."
+                      autocomplete="off"
+                    />
+                  </div>
                 </div>
-
-                <!-- hasil pencarian -->
-                <div id="searchResults"
-                    class="list-group position-absolute w-100 shadow-sm"
-                    style="z-index: 1050; display:none; max-height: 300px; overflow-y:auto;">
-                </div>
-                </div>
+              </div>
             </div>
-            </div>
-            <!-- /Search -->
 
-            <!-- kanan: contoh switcher -->
-            <ul class="navbar-nav flex-row align-items-center ms-auto">
-            <li class="nav-item dropdown-style-switcher dropdown me-2 me-xl-0">
-                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+            <!-- 🔹 Theme switch kanan -->
+            <div class="dropdown dropdown-style-switcher">
+              <a class="nav-link dropdown-toggle text-secondary" href="#" data-bs-toggle="dropdown">
                 <i class="ti ti-md"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-styles">
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-styles">
                 <li><a class="dropdown-item" href="#" data-theme="light"><i class="ti ti-sun me-2"></i>Light</a></li>
                 <li><a class="dropdown-item" href="#" data-theme="dark"><i class="ti ti-moon me-2"></i>Dark</a></li>
-                </ul>
-            </li>
-            </ul>
+              </ul>
+            </div>
 
-        </div>
+          </div>
         </nav>
-        
+      </header>
+
+      <!-- 🔹 Overlay fokus search -->
+      <div id="searchOverlay"></div>
+
+
         <!-- / Navbar -->
-
-        @yield('content')
-        <!-- / Content -->
-
+        <!-- BODY PRODUK -->
+        <div class="content-wrapper mt-4">
+          <!-- Content -->
+          <div class="container-xxl flex-grow-1 container-p-y" style="margin-top:50px;">
+            <div class="alert alert-warning py-2 px-3 mb-0 mt-2">
+              <small>
+                <strong>INFO:</strong><br>
+                • Pemesanan produk hubungi admin CS kami di <b>082223244130</b><br>
+                • Produk yang dengan brand HOTEL memiiki <b>Minimal Order Quantity (MOQ)</b>
+              </small>
+            </div>
+              <div class="section-header text-center mb-4">
+                <div class="section-underline"></div>
+              </div>
+              <div id="productContainer" class="row g-3"></div>
+          </div>
+        </div>
       <!-- Overlay -->
       <div class="layout-overlay layout-menu-toggle"></div>
 
@@ -271,92 +176,164 @@
     <!-- Page JS (from child views) -->
     @include('layouts.scripts')
     @yield('scripts')
-    <script>
-    let selectedCategory = 'all';  
-    const categoryList = document.getElementById("categoryList");
-    const searchInput = document.getElementById("productSearch");
-    const searchResults = document.getElementById("searchResults");
 
-    // 🔹 Load kategori dari API
-    async function loadCategories() {
-        try {
-        const response = await fetch("/api/categories");
-        const res = await response.json();
-        const data = res.data;
-        
-        categoryList.innerHTML = `
-            <li><a class="dropdown-item" href="#" data-category="all">All Kategori</a></li>
-        ` + data.map(cat => `
-            <li><a class="dropdown-item" href="#" data-category="${cat.slug}">${cat.name}</a></li>
-        `).join("");
 
-        // ketika kategori diklik
-        categoryList.querySelectorAll(".dropdown-item").forEach(item => {
-            item.addEventListener("click", e => {
-            e.preventDefault();
-            selectedCategory = item.getAttribute("data-category");
-            document.getElementById("categoryDropdown").innerText = item.innerText;
-            });
+
+<script>
+  let selectedCategory = "";
+  let products = [];
+  const productContainer = document.getElementById("productContainer");
+
+  // 🔹 Ambil data produk dari API
+  async function loadProducts() {
+    try {
+      const res = await fetch("/api/products");
+      const data = await res.json();
+      products = data.data || [];
+      renderProducts(products);
+    } catch (err) {
+      console.error("Gagal memuat produk:", err);
+    }
+  }
+
+  // 🔹 Tampilkan produk ke dalam container
+  function renderProducts(list) {
+    productContainer.innerHTML = "";
+
+    if (!list || list.length === 0) {
+      productContainer.innerHTML =
+        `<p class="text-center text-muted mt-4">Produk tidak ditemukan.</p>`;
+      return;
+    }
+
+    list.forEach(p => {
+      const col = document.createElement("div");
+      col.className = "col-12 col-md-6 col-lg-4 mb-4"; // lebih lebar karena bentuk horizontal
+
+      // batasi panjang nama & deskripsi
+      const desc = p.description
+                  ? (p.description.length > 30 ? p.description.substring(0, 60) + "..." : p.description)
+                  : "Tidak ada deskripsi";
+                  
+      col.innerHTML = `
+        <div class="card product-card shadow-sm border-0 d-flex flex-row align-items-stretch"
+            onclick="window.location.href='{{ url('products') }}/${p.id}'"
+            style="cursor: pointer;">
+          <div class="card-img-wrapper" data-title="${p.name}">
+            <img src="${p.images ? p.images.path : '{{ asset("assets/images/no-product.png") }}'}"
+                alt="${p.name}" class="card-img-left">
+          </div>
+          <div class="card-body d-flex flex-column justify-content-center">
+            <h6 class="card-title mb-1 fw-semibold">${p.name}</h6>
+            <br>
+            <p class="card-price mb-2 text-black fw-bold">
+              Rp ${Number(p.price).toLocaleString('id-ID')}
+            </p>
+            <br>
+            <p class="card-desc text-muted mb-0">${desc}</p>
+          </div>
+        </div>
+      `;
+      
+      productContainer.appendChild(col);
+    });
+
+
+  }
+
+  // 🔹 Ambil kategori dari API
+  async function loadCategories() {
+    try {
+      const res = await fetch("/api/categories");
+      const x = await res.json();
+      const data = x.data;
+      console.log(data);
+      
+      const categoryList = document.getElementById("categoryList");
+      categoryList.innerHTML =
+        `<li><a class="dropdown-item" href="#" data-id="">All Kategori</a></li>`;
+
+      data.forEach(cat => {
+        const li = document.createElement("li");
+        li.innerHTML =
+          `<a class="dropdown-item" href="#" data-id="${cat.id}">${cat.name}</a>`;
+        categoryList.appendChild(li);
+      });
+
+      categoryList.querySelectorAll("a").forEach(a => {
+        a.addEventListener("click", e => {
+          e.preventDefault();
+          selectedCategory = a.dataset.id;
+          document.getElementById("categoryDropdown").textContent =
+            a.textContent || "All Kategori";
+          filterProducts();
         });
-        } catch (err) {
-        console.error("Gagal memuat kategori:", err);
-        }
+      });
+    } catch (err) {
+      console.error("Gagal memuat kategori:", err);
+    }
+  }
+
+  // 🔹 Filter berdasarkan kategori & pencarian
+  function filterProducts() {
+    const keyword = document
+      .getElementById("productSearch")
+      .value
+      .toLowerCase()
+      .trim();
+
+    // kalau kosong → tampilkan semua produk
+    if (keyword === "" && selectedCategory === "") {
+      renderProducts(products);
+      return;
     }
 
-    // 🔹 Pencarian produk (live search)
-    async function searchProducts(keyword) {
-        if (!keyword.trim()) {
-            searchResults.style.display = "none";
-            return;
-        }
+    let filtered = products;
 
-        try {
-            const res = await fetch(`/api/products/search?query=${encodeURIComponent(keyword)}&category=${selectedCategory}`);
-            const result = await res.json();
-
-            // Pastikan data hasil pencarian ada
-            const products = result.data || [];
-            console.log(products);
-            
-            if (products.length === 0) {
-                searchResults.innerHTML = `<div class="list-group-item text-muted">Tidak ada hasil</div>`;
-            } else {
-                searchResults.innerHTML = products.map(p => `
-                    <a href="/product/${p.slug}" class="list-group-item list-group-item-action d-flex align-items-center">
-                        <img src="${p.images ? p.images.path : '/images/no-image.png'}"
-                            alt="${p.name}"
-                            class="me-2 rounded"
-                            width="40"
-                            height="40">
-                        <span>${p.name}</span>
-                    </a>
-                `).join("");
-            }
-
-            searchResults.style.display = "block";
-        } catch (err) {
-        console.error("Gagal mencari produk:", err);
-        }
+    if (keyword !== "") {
+      filtered = filtered.filter(p =>
+        p.name.toLowerCase().includes(keyword)
+      );
     }
 
-    // 🔹 Event listener untuk input search
-    let typingTimeout;
-    searchInput.addEventListener("input", () => {
-        clearTimeout(typingTimeout);
-        typingTimeout = setTimeout(() => {
-        searchProducts(searchInput.value);
-        }, 300); // debounce 300ms
+    if (selectedCategory) {
+      filtered = filtered.filter(p => p.category_id == selectedCategory);
+    }
+
+    renderProducts(filtered);
+  }
+
+  document
+    .getElementById("productSearch")
+    .addEventListener("input", filterProducts);
+  // 🔹 Load awal
+  loadProducts();
+  loadCategories();
+
+
+
+
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const overlay = document.getElementById("loading-overlay");
+    const searchInput = document.getElementById("productSearch");
+    const searchOverlay = document.getElementById("searchOverlay");
+
+    searchInput.addEventListener("focus", () => {
+      searchOverlay.classList.add("active");
     });
 
-    // klik di luar area hasil pencarian untuk menutup
-    document.addEventListener("click", (e) => {
-        if (!e.target.closest("#searchResults") && !e.target.closest("#productSearch")) {
-        searchResults.style.display = "none";
-        }
+    searchInput.addEventListener("blur", () => {
+      // Delay biar ga langsung ilang kalau klik dropdown
+      setTimeout(() => searchOverlay.classList.remove("active"), 150);
     });
-
-    document.addEventListener("DOMContentLoaded", loadCategories);
     
-    </script>
+    // Setelah 2,5 detik (selesai animasi)
+    setTimeout(() => {
+      overlay.classList.add("hidden");
+    }, 1500);
+  });
+</script>
   </body>
 </html>

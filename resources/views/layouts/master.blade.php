@@ -63,16 +63,16 @@
         <!-- Layout container -->
         <div class="layout-page">
           <!-- Navbar -->
-    @include('layouts.nav')
+          @include('layouts.nav')
           <!-- / Navbar -->
 
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
-          @yield('content')
+            @yield('content')
             <!-- / Content -->
 
-    @include('layouts.footer')
+            @include('layouts.footer')
 
             <div class="content-backdrop fade"></div>
           </div>

@@ -127,7 +127,8 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product = Product::with('images')->findOrFail($id);
+        return view('content.products.detail' , compact('product'));
     }
 
     /**
