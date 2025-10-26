@@ -166,15 +166,15 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="flex-grow-1 me-2">
             <span class="fw-semibold">${escapeHtml(item.name)}</span><br>
             <small>${item.qty} pcs × Rp ${item.price.toLocaleString()}</small><br>
-            <span class="text-success fw-bold">Rp ${subtotal.toLocaleString()}</span>
+            <span class="text-success small fw-semibold">Rp ${subtotal.toLocaleString()}</span>
         </div>
         <div class="d-flex flex-column align-items-end gap-1">
             <div class="btn-group btn-group-sm" role="group">
-            <button class="btn btn-outline-secondary decrease-item" data-index="${i}"><i class="fas fa-minus"></i></button>
-            <button class="btn btn-outline-secondary increase-item" data-index="${i}"><i class="fas fa-plus"></i></button>
+            <button class="btn btn-outline-success decrease-item" data-index="${i}"><i class="fas fa-minus"></i></button>
+            <button class="btn btn-outline-success increase-item" data-index="${i}"><i class="fas fa-plus"></i></button>
             </div>
-            <button class="btn btn-sm btn-outline-danger remove-item mt-1" data-index="${i}">
-            <i class="fas fa-times"></i>
+            <button class="btn btn-sm btn-danger remove-item mt-1" data-index="${i}">
+                <i class="fa-solid fa-trash"></i>
             </button>
         </div>
         `;

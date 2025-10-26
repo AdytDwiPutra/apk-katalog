@@ -40,8 +40,8 @@
                 <ul id="cartItems" class="list-unstyled mb-2"></ul>
 
                 <div class="dropdown-divider"></div>
-                <div class="px-3 pb-2 small text-end">
-                  <strong>Total:</strong> <span id="cartTotal">Rp 0</span>
+                <div class="px-3 pb-2 text-end">
+                  <strong>Total:</strong> <span class="fw-bold" id="cartTotal">Rp 0</span>
                 </div>
 
                 <button id="clearCartBtn" class="btn btn-sm btn-outline-danger w-100">Kosongkan</button>
