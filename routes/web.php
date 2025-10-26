@@ -291,7 +291,7 @@ Route::resource('products', ProductController::class);
 Route::resource('home', ProductController::class);
 
 Route::get('/', function () {
-    return view('content.home.index');
+    return view('pages.products');
 });
 
 Auth::routes();

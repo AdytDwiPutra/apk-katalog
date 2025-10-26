@@ -77,7 +77,7 @@
       <h4 class="fw-bold mb-1"><span class="judul"></span> Pelanggan</h4>
       <p class="text-muted mb-0">Input data pelanggan baru lengkap</p>
     </div>
-    <a href="{{ route('customer.index') }}" class="btn btn-outline-secondary">
+    <a href="{{ route('products.index') }}" class="btn btn-outline-secondary">
       <i class="ti ti-arrow-left me-1"></i> Kembali ke List
     </a>
   </div>

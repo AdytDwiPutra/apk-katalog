@@ -157,11 +157,13 @@
   position: fixed;
   inset: 0;
   background: #fff; /* tetap putih atau sesuai tema */
-  z-index: 9999;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: opacity 0.8s ease, visibility 0.8s ease;
+  pointer-events: auto; /* aktif saat loading */
+  
 }
 
 #loading-overlay.hidden {
@@ -279,6 +281,7 @@
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  pointer-events: none; /* biar ga nutup klik */
 }
 
 #loading-screen img {
@@ -325,7 +328,7 @@ html, body {
   width: 100%;
   height: 100%;
   background: rgba(20, 20, 20, 0.13);
-  z-index: 1040;
+  z-index: 100 !important;
   transition: opacity 0.3s ease;
   opacity: 0;
 }
@@ -560,6 +563,308 @@ html, body {
     opacity: 1;
     transform: scaleX(1);
   }
+}
+
+/* Gambar carousel biar proporsional */
+#carouselExample-cf img {
+  width: 100%;
+  height: 420px; /* sesuaikan tinggi sesuai tampilan */
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+
+/* 🔹 Keranjang badge */
+#cartCount {
+  padding: 3px 6px;
+  font-size: 11px;
+}
+
+/* 🔹 WhatsApp floating button */
+.whatsapp-float {
+  position: fixed !important;
+  right: 20px !important;
+  bottom: 20px !important;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 60px;
+  font-size: 32px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  z-index: 1000 !important; /* ⛔ pastikan paling atas */
+  transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1) translateY(-3px);
+  color: #fff;
+}
+
+/* 🔹 Efek pulse opsional */
+.whatsapp-float::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(37, 211, 102, 0.35);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  animation: pulse 1.8s infinite;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* 📱 Mobile responsive */
+@media (max-width: 768px) {
+  .whatsapp-float {
+    right: 15px !important;
+    bottom: 15px !important;
+    width: 52px;
+    height: 52px;
+    font-size: 28px;
+    line-height: 52px;
+  }
+}
+
+/* Add these new mobile navigation styles */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-brand {
+    max-width: 140px; /* Limit logo width on mobile */
+  }
+
+  .navbar-brand img {
+    height: 32px; /* Smaller logo on mobile */
+    width: auto;
+  }
+
+  .navbar-brand span {
+    font-size: 0.9rem; /* Smaller brand text */
+  }
+
+  .search-wrapper {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    padding: 0.5rem 1rem;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1040;
+  }
+
+  .search-box {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .search-box .input-group {
+    width: 100%;
+  }
+
+  .search-box .form-control {
+    height: 38px;
+  }
+
+  /* Adjust content spacing when search is fixed */
+  .content-wrapper {
+    padding-top: 120px;
+  }
+
+  /* Better mobile dropdown menus */
+  .dropdown-menu {
+    position: fixed !important;
+    top: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+    padding: 1rem;
+  }
+  @media (max-width: 768px) {
+    #cartItems {
+      margin-top: 53px !important;
+    }
+  }
+
+  /* Cart dropdown specific */
+  #cartDropdown + .dropdown-menu {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  /* Adjust header layout */
+  .app-header .container-fluid {
+    gap: 0.5rem;
+  }
+
+  /* Better spacing for cart icon */
+  .nav-link {
+    padding: 0.5rem;
+  }
+
+  #cartCount {
+    top: -2px;
+    right: -2px;
+  }
+
+  /* Hide certain elements on mobile */
+  .category-dropdown,
+  .navbar-text {
+    display: none !important;
+  }
+
+  /* Stack icons in mobile view */
+  .d-flex.align-items-center {
+    gap: 0.5rem;
+  }
+}
+
+/* Additional small screen adjustments */
+@media (max-width: 576px) {
+  .navbar-brand span {
+    display: none; /* Hide brand text on very small screens */
+  }
+
+  .search-wrapper {
+    top: 50px;
+  }
+
+  .content-wrapper {
+    padding-top: 100px;
+  }
+
+  /* Smaller padding for content */
+  .container-p-y {
+    padding: 1rem !important;
+  }
+}
+
+/* Fix search overlay for mobile */
+#searchOverlay.active {
+  top: 60px;
+  height: calc(100% - 60px);
+}
+
+/* Fade-out animasi saat hapus item */
+.cart-item.fade-out {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.25s ease-out;
+}
+
+/* Tombol qty */
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* Total harga */
+#cartTotal {
+  display: block;
+  text-align: right;
+  font-weight: 600;
+  color: #222;
+  margin-top: 6px;
+  padding-top: 6px;
+}
+
+/* Toast */
+.toast-msg {
+  position: fixed;
+  bottom: 100px;
+  right: 25px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 2000;
+}
+.toast-msg.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.iziToast-buttons button {
+  background: #007bff !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 4px;
+  padding: 6px 10px !important;
+  font-size: 14px;
+}
+.iziToast-buttons button:hover {
+  background: #0056b3 !important;
+}
+.iziToast-buttons button:nth-child(2) {
+  background: #6c757d !important;
+}
+.iziToast-buttons button:nth-child(2):hover {
+  background: #5a6268 !important;
+}
+#carouselExample-cf {
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#carouselExample-cf[style*="display: none"] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal-backdrop {
+  z-index: 1040 !important;
+}
+
+.modal {
+  z-index: 1055 !important;
+}
+
+.modal-content {
+  position: relative;
+  z-index: 1060 !important;
+}
+/* pastikan overlay/loader bisa muncul di awal */
+#loading-overlay {
+  display: flex;
+  z-index: 1100 !important; /* di atas modal backdrop (1040) dan modal (1055) */
+}
+
+#loading-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* kalau loading-screen tidak dipakai, biarkan sembunyi */
+#loading-screen {
+  display: none;
 }
 
 </style>

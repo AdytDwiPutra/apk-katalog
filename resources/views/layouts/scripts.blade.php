@@ -96,3 +96,213 @@
     }
 
 </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const loadingOverlay = document.getElementById('loading-overlay');
+    const searchOverlay = document.getElementById('searchOverlay');
+    const cartCountEl = document.getElementById('cartCount');
+    const cartItemsEl = document.getElementById('cartItems');
+    const cartTotalEl = document.getElementById('cartTotal');
+    const clearCartBtn = document.getElementById('clearCartBtn');
+
+    // State
+    let cart = [];
+
+    // Utilities
+    function escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/[&<>"']/g, function (m) {
+            return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m];
+        });
+    }
+
+
+
+
+
+    // Simple escaping helpers for safety
+
+
+
+    // 🔹 Format angka ke rupiah
+    function formatRupiah(num) {
+        return 'Rp ' + num.toLocaleString('id-ID');
+    }
+
+    // 🛒 Cart functions
+    function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function loadCart() {
+    const saved = localStorage.getItem('cart');
+    return saved ? JSON.parse(saved) : [];
+    }
+
+    function updateCartCount() {
+    cartCountEl.textContent = cart.length;
+    }
+
+    function renderCart() {
+    cartItemsEl.innerHTML = '';
+
+    if (cart.length === 0) {
+        cartItemsEl.innerHTML = '<li class="text-muted small">Keranjang kosong</li>';
+        cartTotalEl.textContent = 'Rp 0';
+        saveCart();
+        return;
+    }
+
+    let total = 0;
+
+    cart.forEach((item, i) => {
+        const subtotal = item.price * item.qty;
+        total += subtotal;
+
+        const li = document.createElement('li');
+        li.className = 'd-flex justify-content-between align-items-start mb-2';
+        li.innerHTML = `
+        <div class="flex-grow-1 me-2">
+            <span class="fw-semibold">${escapeHtml(item.name)}</span><br>
+            <small>${item.qty} pcs × Rp ${item.price.toLocaleString()}</small><br>
+            <span class="text-success fw-bold">Rp ${subtotal.toLocaleString()}</span>
+        </div>
+        <div class="d-flex flex-column align-items-end gap-1">
+            <div class="btn-group btn-group-sm" role="group">
+            <button class="btn btn-outline-secondary decrease-item" data-index="${i}"><i class="fas fa-minus"></i></button>
+            <button class="btn btn-outline-secondary increase-item" data-index="${i}"><i class="fas fa-plus"></i></button>
+            </div>
+            <button class="btn btn-sm btn-outline-danger remove-item mt-1" data-index="${i}">
+            <i class="fas fa-times"></i>
+            </button>
+        </div>
+        `;
+        cartItemsEl.appendChild(li);
+    });
+
+    // total keseluruhan
+    cartTotalEl.textContent = 'Rp ' + total.toLocaleString();
+
+    saveCart();
+    }
+
+    // 🧠 Load cart dari localStorage saat awal
+    cart = loadCart();
+    updateCartCount();
+    renderCart();
+
+    // 📦 Add event listener
+    document.addEventListener('click', function (e) {
+    // ➕ Tambah ke cart
+    if (e.target.closest('.add-to-cart')) {
+        const btn = e.target.closest('.add-to-cart');
+        const name = btn.getAttribute('data-name') || 'Produk';
+        const price = parseInt(btn.getAttribute('data-price')) || 0;
+
+        const existing = cart.find(item => item.name === name);
+        if (existing) {
+            existing.qty += 1;
+        } else {
+            cart.push({ name, price, qty: 1 });
+        }
+
+        iziToast.success({
+            title: 'Berhasil',
+            message: 'Menambahkan '+ name + ' ke keranjang',
+            position: 'bottomRight',
+            timeout: 2000, // otomatis hilang 2 detik
+        });
+
+        updateCartCount();
+        renderCart();
+        saveCart();
+    }
+
+    if (e.target.closest('.increase-item')) {
+        const idx = e.target.closest('.increase-item').dataset.index;
+        cart[idx].qty++;
+        renderCart();
+    }
+
+    if (e.target.closest('.decrease-item')) {
+        const idx = e.target.closest('.decrease-item').dataset.index;
+        if (cart[idx].qty > 1) {
+        cart[idx].qty--;
+        } else {
+        cart.splice(idx, 1);
+        }
+        renderCart();
+    }
+
+    if (e.target.closest('.remove-item')) {
+        const idx = e.target.closest('.remove-item').dataset.index;
+        cart.splice(idx, 1);
+        renderCart();
+    }
+    });
+
+    // 🧹 Kosongkan semua item pakai iziToast
+    clearCartBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (cart.length === 0) return;
+
+    iziToast.question({
+        timeout: false,
+        close: false,
+        overlay: true,
+        displayMode: 'once',
+        title: 'Konfirmasi',
+        message: 'Yakin ingin mengosongkan keranjang?',
+        position: 'center',
+        buttons: [
+        ['<button><b>Ya</b></button>', function (instance, toast) {
+            cart = [];
+            updateCartCount();
+            renderCart();
+            saveCart();
+            instance.hide({ transitionOut: 'fadeOut' }, toast);
+        }],
+        ['<button>Batal</button>', function (instance, toast) {
+            instance.hide({ transitionOut: 'fadeOut' }, toast);
+        }]
+        ]
+    });
+    });
+
+    // 💬 WhatsApp send
+    document.querySelector('.whatsapp-float').addEventListener('click', function (ev) {
+        ev.preventDefault();
+        if (cart.length === 0) {
+            iziToast.warning({
+                title: 'Keranjang kosong',
+                message: 'Tambahkan produk dulu sebelum chat admin 😊',
+                position: 'topCenter'
+            });
+            return;
+        }
+
+        let message = 'Halo, saya ingin memesan:%0A';
+        let total = 0;
+
+        cart.forEach((item, i) => {
+            const subtotal = item.price * item.qty;
+            total += subtotal;
+            message += `${i + 1}. ${item.name} (${item.qty} pcs × Rp ${item.price.toLocaleString('id-ID')}) = Rp ${subtotal.toLocaleString('id-ID')}%0A`;
+        });
+
+        message += `%0A🧾 *Total Keseluruhan:* Rp ${total.toLocaleString('id-ID')}`;
+
+        const waUrl = `https://wa.me/6282223244130?text=${message}`;
+        window.open(waUrl, '_blank');
+
+    });
+
+
+
+
+    setTimeout(() => loadingOverlay.classList.add('hidden'), 1500);
+});
+
+</script>
+

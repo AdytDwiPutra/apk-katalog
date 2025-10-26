@@ -26,16 +26,16 @@
               </a>
             </li>
 
-            {{-- <!-- Session User -->
+            <!-- Session User -->
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-users"></i>
-                <div data-i18n="Session User">Product</div>
+                <div data-i18n="Master Data">Master</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
                   <a href="session-hotspot.html" class="menu-link">
-                    <div data-i18n="Hotspot">Hotspot</div>
+                    <div data-i18n="Kategori">Kategori</div>
                   </a>
                 </li>
                 <li class="menu-item">
@@ -45,7 +45,7 @@
                 </li>
               </ul>
             </li>
-
+{{-- 
             <!-- Settings -->
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
