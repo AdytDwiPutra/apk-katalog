@@ -273,6 +273,40 @@ document.addEventListener('DOMContentLoaded', function () {
     // 💬 WhatsApp send
     document.querySelector('.whatsapp-float').addEventListener('click', function (ev) {
         ev.preventDefault();
+
+        const waUrl = `https://wa.me/6282223244130`;
+        window.open(waUrl, '_blank');
+
+    });
+    
+    document.querySelector('.whatsapp-float-2').addEventListener('click', function (ev) {
+        ev.preventDefault();
+        if (cart.length === 0) {
+            iziToast.warning({
+                title: 'Keranjang kosong',
+                message: 'Tambahkan produk dulu sebelum chat admin 😊',
+                position: 'topCenter'
+            });
+            return;
+        }
+
+        let message = 'Halo, saya ingin memesan:%0A';
+        let total = 0;
+
+        cart.forEach((item, i) => {
+            const subtotal = item.price * item.qty;
+            total += subtotal;
+            message += `${i + 1}. ${item.name} (${item.qty} pcs × Rp ${item.price.toLocaleString('id-ID')}) = Rp ${subtotal.toLocaleString('id-ID')}%0A`;
+        });
+
+        message += `%0A🧾 *Total Keseluruhan:* Rp ${total.toLocaleString('id-ID')}`;
+
+        const waUrl = `https://wa.me/6282223244130?text=${message}`;
+        window.open(waUrl, '_blank');
+
+    });
+    document.querySelector('.whatsapp-float-2').addEventListener('click', function (ev) {
+        ev.preventDefault();
         if (cart.length === 0) {
             iziToast.warning({
                 title: 'Keranjang kosong',
@@ -306,3 +340,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const cartBtn = document.getElementById('cartDropdown');
+  const cartPanel = document.getElementById('cartPanel');
+  const closeBtn = document.getElementById('closeCartBtn');
+  const overlay = document.getElementById('cartOverlay');
+
+  if (cartBtn && cartPanel && overlay) {
+    cartBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      cartPanel.classList.add('active');
+      overlay.classList.add('active');
+    });
+
+    function closeCart() {
+      cartPanel.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+
+    closeBtn.addEventListener('click', closeCart);
+    overlay.addEventListener('click', closeCart);
+  }
+});
+</script>

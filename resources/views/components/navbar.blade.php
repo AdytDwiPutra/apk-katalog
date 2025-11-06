@@ -30,7 +30,7 @@
 
           <!-- Cart & Theme -->
           <div class="d-flex align-items-center">
-            <div class="dropdown me-3">
+            {{-- <div class="dropdown me-3">
               <a class="nav-link position-relative" href="#" id="cartDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-shopping-cart fa-lg text-secondary"></i>
                 <span id="cartCount" class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle" style="font-size: 10px;">0</span>
@@ -46,9 +46,48 @@
 
                 <button id="clearCartBtn" class="btn btn-sm btn-outline-danger w-100">Kosongkan</button>
               </ul>
+            </div> --}}
+            <!-- Tombol icon di navbar -->
+            <div class="me-3">
+              <a href="#" id="cartDropdown" class="nav-link position-relative">
+                <i class="fas fa-shopping-cart fa-lg text-secondary"></i>
+                <span id="cartCount"
+                  class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle"
+                  style="font-size: 10px;">0</span>
+              </a>
             </div>
 
-            <div class="dropdown dropdown-style-switcher">
+            <!-- Panel keranjang manual -->
+            <div id="cartPanel" class="cart-offcanvas">
+              <div class="cart-header">
+                <h6 class="fw-bold mb-0">Keranjang</h6>
+                <button type="button" class="btn-close" id="closeCartBtn">&times;</button>
+              </div>
+
+              <div class="cart-body">
+                <ul id="cartItems" class="list-unstyled flex-grow-1 overflow-auto mb-3">
+                  <li class="text-muted small text-center mt-3">Keranjang kosong</li>
+                </ul>
+
+                <div class="cart-footer">
+                  <div class="d-flex justify-content-between mb-2">
+                    <strong>Total:</strong>
+                    <span id="cartTotal" class="fw-bold">Rp 0</span>
+                  </div>
+
+                  {{-- <button id="checkoutBtn" class="btn btn-success w-100 fw-semibold mb-2">Checkout</button> --}}
+                  <a id="waOrderBtn" href="#" target="_blank" class="btn btn-success w-100 fw-semibold mb-2 whatsapp-float-2">
+                    <i class="fab fa-whatsapp me-1"></i> Pesan via WhatsApp
+                  </a>
+                  <button id="clearCartBtn" class="btn btn-outline-danger w-100 fw-semibold">Kosongkan</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- overlay gelap -->
+            <div id="cartOverlay" class="cart-overlay"></div>
+
+            {{-- <div class="dropdown dropdown-style-switcher">
               <a class="nav-link dropdown-toggle text-secondary" href="#" data-bs-toggle="dropdown">
                 <i class="ti ti-md"></i>
               </a>
@@ -56,7 +95,7 @@
                 <li><a class="dropdown-item" href="#" data-theme="light"><i class="ti ti-sun me-2"></i>Light</a></li>
                 <li><a class="dropdown-item" href="#" data-theme="dark"><i class="ti ti-moon me-2"></i>Dark</a></li>
               </ul>
-            </div>
+            </div> --}}
           </div>
         </div>
       </nav>

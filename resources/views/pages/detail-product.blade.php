@@ -316,7 +316,7 @@
         <h2 class="product-title">{{ $product->name }}</h2>
 
         <div class="product-price text-1">{{ formatRupiah($product->price) }}</div>
-        <button class="btn btn-sm btn-outline-success add-to-cart" data-name="{{ $product->name }}" data-price="{{ $product->price }}">Tambah ke Keranjang</button>
+        <button class="btn btn-sm btn-success add-to-cart" data-name="{{ $product->name }}" data-price="{{ $product->price }}">Tambah &nbsp; <i class="fas fa-shopping-cart fa-lg text-white"></i></button>
 
         <!-- ============================ -->
         <!-- Bagian TAB Detail Produk -->

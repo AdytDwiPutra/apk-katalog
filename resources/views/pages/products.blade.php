@@ -1,10 +1,59 @@
 @extends('layouts.app')
 
 @section('title', 'Produk | Elang Omega')
+<style>
+    .product-card {
+  transition: all 0.3s ease;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
 
+.card-img-wrapper {
+  overflow: hidden;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 270px; /* Tinggi gambar (¾ tinggi card) */
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: 1rem;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1rem;
+}
+
+.card-price {
+  font-size: 0.95rem;
+  color: #000;
+}
+
+.card-desc {
+  font-size: 0.85rem;
+  color: #888;
+  min-height: 30px;
+}
+@media (max-width: 576px) {
+  .card-img-top {
+    height: 220px;
+  }
+}
+
+</style>
 @section('content')
 
-<div class="container-xxl flex-grow-1 container-p-y" style="margin-top:50px;">
+{{-- <div class="container-xxl flex-grow-1 container-p-y" style="margin-top:50px;">
     <div class="alert alert-warning py-2 px-3 mb-0 mt-2">
     <small>
         <strong>INFO:</strong><br>
@@ -17,9 +66,9 @@
     <div class="section-underline"></div>
     </div>
 
-    <!-- Product grid -->
-    <div id="productContainer" class="row g-3"></div>
-</div>
+</div> --}}
+<!-- Product grid -->
+<div id="productContainer" class="row g-3 mt-2 p-y"></div>
 
 @endsection
 
@@ -80,20 +129,29 @@
                     const shortDesc = p.description ? (p.description.length > 60 ? p.description.substring(0, 60) + '...' : p.description) : 'Tidak ada deskripsi';
 
                     col.innerHTML = `
-                    <div class="card product-card shadow-sm border-0 d-flex flex-row align-items-stretch" style="cursor:pointer;">
-                        <div class="card-img-wrapper" data-title="${escapeHtml(p.name)}">
-                        <img src="${imageSrc}" alt="${escapeHtml(p.name)}" class="card-img-left">
-                        </div>
-                        <div class="card-body d-flex flex-column justify-content-center">
-                        <h6 class="card-title mb-1 fw-semibold">${escapeHtml(p.name)}</h6>
-                        <p class="card-price mb-2 text-black fw-bold">${formatCurrency(p.price)}</p>
-                        <p class="card-desc text-muted mb-2">${escapeHtml(shortDesc)}</p>
-                        <div class="d-flex gap-2">
-                            <a class="btn btn-sm btn-primary btn-details" href="{{ url("products") }}/${p.id}" data-id="${p.id}">Lihat</a>
-                            <button class="btn btn-sm btn-outline-success add-to-cart" data-name="${escapeAttr(p.name)}" data-price="${p.price}">Tambah ke Keranjang</button>
-                        </div>
-                        </div>
-                    </div>
+<div class="card product-card shadow-sm border-0" style="cursor:pointer;">
+  <div class="card-img-wrapper" data-title="${escapeHtml(p.name)}">
+    <img src="${imageSrc}" alt="${escapeHtml(p.name)}" class="card-img-top">
+  </div>
+
+  <div class="card-body text-center d-flex flex-column justify-content-between">
+    <div>
+      <h6 class="card-title mb-1 fw-semibold">${escapeHtml(p.name)}</h6>
+      <p class="card-price mb-2 text-black fw-bold">${formatCurrency(p.price)}</p>
+      <p class="card-desc text-muted mb-3">${escapeHtml(shortDesc)}</p>
+    </div>
+
+    <div class="d-flex gap-2 justify-content-center mt-auto">
+      <a class="btn btn-sm btn-primary btn-details" href="{{ url("products") }}/${p.id}" data-id="${p.id}">
+        Lihat
+      </a>
+      <button class="btn btn-sm btn-success add-to-cart" data-name="${escapeAttr(p.name)}" data-price="${p.price}">
+        Tambah &nbsp; <i class="fas fa-shopping-cart fa-lg text-white"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
                     `;
 
                     productContainer.appendChild(col);

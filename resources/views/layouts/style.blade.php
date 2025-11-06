@@ -751,7 +751,7 @@ html, body {
   }
 
   .content-wrapper {
-    padding-top: 100px;
+    padding-top: 40px;
   }
 
   /* Smaller padding for content */
@@ -866,5 +866,102 @@ html, body {
 #loading-screen {
   display: none;
 }
+/* --- OFFCANVAS PANEL --- */
+.cart-offcanvas {
+  position: fixed;
+  top: 0;
+  right: -380px; /* sembunyikan dulu */
+  width: 360px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.15);
+  border-radius: 12px 0 0 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1050;
+  transition: right 0.4s ease;
+}
+
+/* aktifkan */
+.cart-offcanvas.active {
+  right: 0;
+}
+
+/* overlay hitam transparan */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+  display: none;
+  z-index: 1049;
+}
+
+/* aktif */
+.cart-overlay.active {
+  display: block;
+}
+
+/* header dan body styling */
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.cart-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.cart-footer {
+  border-top: 1px solid #e5e5e5;
+  padding-top: 12px;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+/* Default: tampil teks + ikon di desktop */
+.add-to-cart i {
+  margin-left: 4px;
+}
+
+/* Saat layar kecil (HP <= 576px) */
+@media (max-width: 576px) {
+  .add-to-cart {
+    padding: 8px 10px;
+    border-radius: 4px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .add-to-cart::before {
+    content: none; /* hilangkan teks tambahan */
+  }
+
+  .add-to-cart i {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .add-to-cart {
+    font-size: 0; /* sembunyikan teks "Tambah" */
+  }
+}
+
 
 </style>
